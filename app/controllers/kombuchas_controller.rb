@@ -1,0 +1,2 @@
+class KombuchasController < ApplicationController
+end

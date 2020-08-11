@@ -1,0 +1,2 @@
+module KombuchasHelper
+end
