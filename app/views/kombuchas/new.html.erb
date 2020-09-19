@@ -1,0 +1,13 @@
+<h1>New Kombucha</h1>
+
+<%= form_for :kombucha, url: kombuchas_path do |f| %>
+    <% # "url: kombuchas_path" this submits the user input to our create method %>
+
+
+
+<p>
+    <%= f.label :flavor %>
+    <%= f.text_field(:flavor) %>
+</p>
+
+<% end %>
