@@ -5,6 +5,7 @@ class KombuchasController < ApplicationController
     end 
 
     def show 
+        @kombucha = Kombucha.find(params[:id])
     end 
 
     def new 
@@ -13,6 +14,12 @@ class KombuchasController < ApplicationController
 
     def create 
         @kombucha = Kombucha.create(kombucha_params)
+        if(@kombucha.save)
+            redirect_to @kombucha
+        else 
+            puts "---> didnt save, rendered new again"
+            render 'new'
+        end 
     end 
 
     def edit 
@@ -22,5 +29,9 @@ class KombuchasController < ApplicationController
     end 
 
     def destroy 
+    end 
+
+    private def kombucha_params 
+        params.require(:kombucha).permit(:flavor, :description, :buy_again) 
     end 
 end

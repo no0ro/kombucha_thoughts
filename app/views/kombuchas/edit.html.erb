@@ -1,1 +1,30 @@
 <h1>edit Kombucha</h1>
+
+
+
+<%= form_for :kombucha, url: kombuchas_path do |f| %>
+    <% # "url: kombuchas_path" this submits the user input to our create method %>
+
+    <p>
+        <%= f.label :flavor %>
+        <%= f.text_field(:flavor) %>
+    </p>
+
+
+    <p>
+        <%= f.label :description %>
+        <%= f.text_field(:description) %>
+    </p>
+
+
+    <p>
+        <%= f.label :buy_again %>
+        <%= f.check_box(:buy_again) %>
+    </p>
+
+
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>
