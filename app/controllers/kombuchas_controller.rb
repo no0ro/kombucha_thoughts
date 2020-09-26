@@ -1,5 +1,5 @@
 class KombuchasController < ApplicationController
-    http_basic_authenticate_with name: "noelle", password: "1234", expect: [:index, :show]
+    #http_basic_authenticate_with name: "noelle", password: "1234", expect: [:index, :show]
 # we want to have to authenticate on all the routes EXCEPT for index and show
     # these are the only route you should be able to go to use without having to authenticate (aka public could see)  
     
