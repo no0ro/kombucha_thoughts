@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
     has_many :kombuchas #that they created
     
+    validates :username, uniqueness: true, presence: true
+
+    has_secure_password
 
     # auth 
 
