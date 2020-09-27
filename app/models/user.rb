@@ -5,17 +5,18 @@ class User < ApplicationRecord
 
     has_many :kombuchas #that they created
     
-    validates :username, uniqueness: true, presence: true
 
+    validates :username, uniqueness: true, presence: true # cant have duplicate usernames
+    # validates :email, presence: true
+
+    # authentication w/ bcrypt gem
     has_secure_password
 
-    # auth 
-
-    # models
     ## google_omniauth 
     ## github_omniauth 
 end
  
+
 ## Both below, are basically just defining a method with the same name like:
     # def kombuchas 
     # end
