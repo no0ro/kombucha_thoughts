@@ -1,28 +1,38 @@
 <h1>New Kombucha</h1>
 
-<%= form_for :kombucha, url: kombuchas_path do |f| %>
-    <% # "url: kombuchas_path" this submits the user input to our create method %>
 
-    <p>
+<%= form_for(@kombucha) do |f| %>
+    <div>
         <%= f.label :flavor %>
-        <%= f.text_field(:flavor) %>
-    </p>
+        <%= f.text_field :flavor %>
+    </div>
 
+    <div>
+        <%= f.label :description  %>
+        <%= f.text_field :description %>
+    </div>
 
-    <p>
-        <%= f.label :description %>
-        <%= f.text_field(:description) %>
-    </p>
-
-
-    <p>
+    <div>
         <%= f.label :buy_again %>
-        <%= f.check_box(:buy_again) %>
-    </p>
+        <%= f.check_box :buy_again %>
+    </div>
+
+    <p> Select an Existing Brand: </p>
+    <div>
+        <%= f.collection_select(:brand_id, Brand.all, :id, :name) %>
+    </div>
+    
+    <p> Create a New Brand :</p>
+    <div>
+    </div>
+
+    <div>
+    <%= f.submit "Add Kombucha"  %>
+    </div>
+<% end %>  
 
 
-    <p>
-        <%= f.submit %>
-    </p>
 
-<% end %>
+<%# t.integer "brand_id"   belongs_to :brand %>
+<%# t.integer "user_id" %>
+  
