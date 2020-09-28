@@ -8,14 +8,13 @@ class KombuchasController < ApplicationController
     #     @kombucha = Kombucha.all
     # end 
 
-    # def show 
-    #     @kombucha = Kombucha.find(params[:id])
-    # end 
+    def show 
+        @kombucha = Kombucha.find(params[:id])
+    end 
 
     def new 
         @kombucha = Kombucha.new
-        @kombucha.build_brand  # saves nested form properly: name="kombucha[brand_attributes][name]"
-            # see model & kombucha new form
+        @kombucha.build_brand  # saves nested form properly: name="kombucha[brand_attributes][name]" # see model & kombucha new form
     end 
 
     # def create 
@@ -32,6 +31,20 @@ class KombuchasController < ApplicationController
     #     end 
     # end 
 
+    def create 
+        @kombucha = Kombucha.new(kombucha_params)
+        @kombucha.user_id = session[:user_id] # pulling from the session id,(aka user.id) to then assign that to the creater of this new kombucha
+                #log them in
+
+        if @kombucha.save # where kombucha validations happen
+            
+            redirect_to kombucha_path(@kombucha) #showxs
+        else 
+            # build
+            render :new
+        end 
+    end 
+
     def edit 
     end 
 
@@ -39,7 +52,7 @@ class KombuchasController < ApplicationController
     end 
 
     def destroy 
-    end 
+    end  
 
     private 
 
