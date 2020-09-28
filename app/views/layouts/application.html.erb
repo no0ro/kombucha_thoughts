@@ -9,7 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div> <%= link_to "Log Out", logout_path, method: :delete %></div>
+  <div> 
+    <%= link_to "Log Out", logout_path, method: :delete %>
+    <%= link_to "Add a Kombucha", new_kombucha_path %>
+  
+  </div>
   <body>
     <%= yield %>
   </body>
