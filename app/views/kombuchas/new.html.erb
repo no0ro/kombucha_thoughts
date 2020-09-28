@@ -12,9 +12,9 @@
         <%= f.text_field :description %>
     </div>
 
-    <div>
+    <div> 
         <%= f.label :buy_again %>
-        <%= f.check_box :buy_again %>
+        <%= f.check_box :buy_again  %>
     </div>
 
     <p> Select an Existing Brand: </p>
@@ -24,6 +24,10 @@
     
     <p> Create a New Brand :</p>
     <div>
+        <%= f.fields_for :brand do |b| %>
+            <%= b.label :name %>
+            <%= b.text_field :name %>
+        <% end %>
     </div>
 
     <div>

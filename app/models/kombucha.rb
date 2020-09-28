@@ -6,6 +6,7 @@ class Kombucha < ApplicationRecord
   has_many :users, through: :reviews #ppl who have reviewed it
   # ^ gives us all the plural instances
 
+  accepts_nested_attributes_for :brand
 
   # validations 
 

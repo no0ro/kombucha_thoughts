@@ -14,6 +14,8 @@ class KombuchasController < ApplicationController
 
     def new 
         @kombucha = Kombucha.new
+        @kombucha.build_brand  # saves nested form properly: name="kombucha[brand_attributes][name]"
+            # see model & kombucha new form
     end 
 
     # def create 
@@ -39,7 +41,9 @@ class KombuchasController < ApplicationController
     def destroy 
     end 
 
-    # private def kombucha_params 
-    #     params.require(:kombucha).permit(:flavor, :description, :buy_again) 
-    # end 
+    private 
+
+    def kombucha_params 
+        params.require(:kombucha).permit(:flavor, :description, :buy_again, :brand_id, brand_attributes: [:name]) 
+    end 
 end
