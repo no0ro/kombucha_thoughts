@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   delete '/logout' => "sessions#destroy"
 
   
-  resources :reviews
-  resources :kombuchas
+
+  resources :kombuchas do 
+    resources :reviews, only: [:new, :index]
+  end 
+
 
   resources :brands
   resources :users
