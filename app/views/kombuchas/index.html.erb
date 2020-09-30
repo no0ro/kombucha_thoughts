@@ -2,10 +2,8 @@
 
 <div>
 <% @kombuchas.each do |k| %>
- <h2> <%= k.flavor %> - <%= k.brand.name%>  </h2>
- <%= k.description %>
-
-
+    <h2> <%= k.flavor %> - <%= k.brand.name%>  </h2>
+    <%= k.description %>
 <% end %>
 
    
