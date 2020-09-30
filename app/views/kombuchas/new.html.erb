@@ -19,7 +19,7 @@
 
     <p> Select an Existing Brand: </p>
     <div>
-        <%= f.collection_select(:brand_id, Brand.all, :id, :name) %>
+        <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select One' %>
     </div>
     
     <p> Create a New Brand :</p>
@@ -31,7 +31,7 @@
     </div>
 
     <div>
-    <%= f.submit "Add Kombucha"  %>
+    <%= f.submit %>
     </div>
 <% end %>  
 

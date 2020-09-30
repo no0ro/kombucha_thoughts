@@ -4,13 +4,8 @@ class KombuchasController < ApplicationController
     # these are the only route you should be able to go to use without having to authenticate (aka public could see)  
     
     # so you cant create a new kombucha, or delete, without logging in 
-    def index
-        @kombuchas = Kombucha.all
-    end 
+ 
 
-    def show 
-        @kombucha = Kombucha.find(params[:id])
-    end 
 
     def new 
         @kombucha = Kombucha.new
@@ -42,6 +37,15 @@ class KombuchasController < ApplicationController
             render :new
         end 
     end 
+
+    def index
+        @kombuchas = Kombucha.all
+    end 
+
+    def show 
+        @kombucha = Kombucha.find(params[:id])
+    end 
+
 
     def edit 
     end 
