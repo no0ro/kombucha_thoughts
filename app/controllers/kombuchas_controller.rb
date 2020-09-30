@@ -4,9 +4,9 @@ class KombuchasController < ApplicationController
     # these are the only route you should be able to go to use without having to authenticate (aka public could see)  
     
     # so you cant create a new kombucha, or delete, without logging in 
-    # def index
-    #     @kombucha = Kombucha.all
-    # end 
+    def index
+        @kombuchas = Kombucha.all
+    end 
 
     def show 
         @kombucha = Kombucha.find(params[:id])
@@ -34,10 +34,8 @@ class KombuchasController < ApplicationController
     def create 
         @kombucha = Kombucha.new(kombucha_params)
         @kombucha.user_id = session[:user_id] # pulling from the session id,(aka user.id) to then assign that to the creater of this new kombucha
-                #log them in
-
+            # assign a user to the params of this newly created kombucha, must do this before we can save the kombucha
         if @kombucha.save # where kombucha validations happen
-            
             redirect_to kombucha_path(@kombucha) #showxs
         else 
             # build
