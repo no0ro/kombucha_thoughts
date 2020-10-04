@@ -13,6 +13,7 @@ class Kombucha < ApplicationRecord
   end 
  
   accepts_nested_attributes_for :brand
+    # this allows the kombucha model to change the Brand by passing a hash key brand_attributes
 
   # validations 
 

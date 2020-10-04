@@ -8,23 +8,15 @@ class KombuchasController < ApplicationController
 
 
     def new 
-        @kombucha = Kombucha.new
-        @kombucha.build_brand  # saves nested form properly: name="kombucha[brand_attributes][name]" # see model & kombucha new form
-    end 
+        @kombucha = Kombucha.new # 1st, create a new instance of Kombucha
+        @kombucha.build_brand  # 2nd, bc we have a nested form, we also need to create a new instance of an Brand, and associate that Brand with the Kombucha. this is accomplished with the build method. 
+            # ^ saves nested form properly: name="kombucha[brand_attributes][name]" # see model & kombucha new form
 
-    # def create 
-    #     @kombucha = Kombucha.create(kombucha_params) 
-    #     # @kombucha = Kombucha.new(params[:kombucha]) -> doesnt work! 
-    #         # bc need to make private below, and then pass that into .new()
+        # .new creates the kombucha instance
+        # .build creates the brand instance inside of the kombucha form. 
 
-    #     if(@kombucha.save)
-    #         #&& @kombucha.is_valid?
-    #         redirect_to @kombucha
-    #     else 
-    #         puts "---> didnt save, rendered new again"
-    #         render 'new'
-    #     end 
-    # end 
+        # the build syntax used here: this is a belongs_to relationship syntax for .build - kombucha belongs to a brand 
+        end 
 
     def create 
         @kombucha = Kombucha.new(kombucha_params)
@@ -43,9 +35,9 @@ class KombuchasController < ApplicationController
     end 
 
     def show 
-        @kombucha = Kombucha.find(params[:id])
+        # vs .find
+        @kombucha = Kombucha.find_by_id(params[:id])
     end 
-
 
     def edit 
     end 
@@ -53,8 +45,8 @@ class KombuchasController < ApplicationController
     def update 
     end 
 
-    def destroy 
-    end  
+    # def destroy 
+    # end  
 
     private 
 

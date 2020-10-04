@@ -20,13 +20,16 @@
     <p> Select an Existing Brand: </p>
     <div>
         <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select One' %>
+        <%# Display all existing brands, for user to associate kombucha with  %>
     </div>
     
     <p> Create a New Brand :</p>
     <div>
         <%= f.fields_for :brand do |b| %>
+                <%# :brand - associated model that we're creating  %>
             <%= b.label :name %>
-            <%= b.text_field :name %>
+            <%= b.text_field :name %>    
+                <%# :name - will be nested under our post_params %>
         <% end %>
     </div>
 
