@@ -3,10 +3,7 @@ class ReviewsController < ApplicationController
         # find kombucha by id
         # (params[:kombucha_id]) refering to reviews params, not kombuchas
         @kombucha = Kombucha.find_by_id(params[:kombucha_id])
-
-
-
-        # review belongs_to a kombucha
+        @review = @kombucha.build_review  # a review belongs_to a kombucha
     end 
 
     def index 
