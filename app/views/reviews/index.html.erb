@@ -1,10 +1,16 @@
-<h1> All Reviews </h1>
+<% if @kombucha %>
+    <h1> Reviews for <%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </h1>
+<% else %>
+    <h1>All Kombucha Reviews</h1>
+<% end %>
+
+
 
 <div>
 <ul>
 <% @reviews.each do |review| %>
     <li>
-        <h2> <%= review.kombucha.flavor%>: <%= review.title %> - <%= review.rating%>  </h2>
+        <h2> <%= review.kombucha.flavor%>: <%= link_to review.title, review_path(review) %> - <%= review.rating%>  </h2>
     </li><br>
 <% end %>
  </ul>
