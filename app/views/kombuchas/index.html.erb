@@ -1,12 +1,15 @@
 <h1>All Kombuchas</h1>
 
 <div>
-<% @kombuchas.each do |k| %>
-    <h2> <%= k.flavor %> - <%= k.brand.name%>  </h2>
-    <%= k.description %>
-<% end %>
-
-   
+<ul>
+    <% @kombuchas.each do |kombucha| %>
+        <li>
+        <h2> <%= kombucha.flavor %> - <%= kombucha.brand.name%>  </h2>
+        <p><%= kombucha.description %></p>
+        <%= link_to "Add a Review", new_kombucha_review_path(kombucha) %>
+        </li><br>
+    <% end %>
+ </ul>
 </div>
 
 
