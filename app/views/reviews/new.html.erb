@@ -1,5 +1,26 @@
-<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h1>
+<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h1> 
 
+<%= form_for(@review) do |f| %>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
 
+    <div>
+        <%= f.label :content  %>
+        <%= f.text_field :content %>
+    </div>
 
+    <div> 
+        <%= f.label :rating %>
+        <%= f.check_box :rating  %>
+    </div>
 
+    <div> 
+        <%= f.hidden_field :kombucha_id %>
+    </div>
+
+    <div>
+    <%= f.submit %>
+    </div>
+<% end %>  
