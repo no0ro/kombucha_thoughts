@@ -36,8 +36,21 @@ class ReviewsController < ApplicationController
         @review = Review.find_by_id(params[:id])
     end 
 
-    def index 
+
+    def index
+        # if nested, aka :kombucha_id exists 
+        if 
+            @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
+                # where - grab all reviews associated with this specific kombucha
+            @reviews = @kombucha.reviews
+
+        else 
+        # else unnested 
+            @reviews = Review.all
+        end 
     end 
+
+
 
 
     private 
