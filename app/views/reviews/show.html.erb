@@ -1,1 +1,15 @@
-<h1>show page</h1>
+<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h1>
+
+
+<div>
+    <p> Title: <%= @review.title%></p>
+</div>
+
+
+<div>
+    <p> Rating: <%= @review.rating%></p>
+</div>
+
+<div>
+    <p> Content: <%= @review.content %></p>
+</div>
