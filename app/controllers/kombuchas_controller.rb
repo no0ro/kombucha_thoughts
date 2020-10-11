@@ -5,8 +5,6 @@ class KombuchasController < ApplicationController
     
     # so you cant create a new kombucha, or delete, without logging in 
  
-
-
     def new 
         @kombucha = Kombucha.new # 1st, create a new instance of Kombucha
         @kombucha.build_brand  # 2nd, bc we have a nested form, we also need to create a new instance of an Brand, and associate that Brand with the Kombucha. this is accomplished with the build method. 
