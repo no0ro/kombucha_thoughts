@@ -15,7 +15,15 @@ class ReviewsController < ApplicationController
     def create 
         @review = Review.new(review_params) # pull from what user just ented
         @review.user_id = session[:user_id] # assign user to this review
-        redirect_to review_path(@review) # review show page
+        
+        if @review.save
+            redirect_to review_path(@review) # review show page
+        else 
+            render :new
+        end 
+    end 
+
+    def show 
     end 
 
     def index 
