@@ -7,12 +7,11 @@ class ReviewsController < ApplicationController
         @review = @kombucha.reviews.build  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review
         # ^ this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form 
         
-        
         # @review = Review.new
-    
     end 
 
     def create 
+        # one way 
         @review = Review.new(review_params) # pull from what user just ented
         @review.user_id = session[:user_id] # assign user to this review
 
@@ -21,6 +20,16 @@ class ReviewsController < ApplicationController
         else 
             render :new
         end 
+
+        # better way
+
+        # @review = current_user.reviews.build(review_params)
+        # if @review.save
+        #     redirect_to review_path(@review)
+        # else
+        #     render :new
+        # end
+
     end 
 
     def show 
