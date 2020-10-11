@@ -5,21 +5,23 @@
         <%= f.label :title %>
         <%= f.text_field :title %>
     </div>
-
-    <div>
-        <%= f.label :content  %>
-        <%= f.text_field :content %>
-    </div>
-
+    <br>
     <div> 
         <%= f.label :rating %>
-        <%= f.check_box :rating  %>
+        <%= f.number_field :rating, min:0, max:5 %>
     </div>
+    <br>
+    <div>
+        <%= f.label :content  %>
+        <%= f.text_area :content, size:"30x10"%>
+    </div>
+
+  
 
     <div> 
         <%= f.hidden_field :kombucha_id %>
     </div>
-
+    <br>
     <div>
     <%= f.submit %>
     </div>
