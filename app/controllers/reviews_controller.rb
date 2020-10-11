@@ -13,6 +13,9 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
+        @review = Review.new(review_params) # pull from what user just ented
+        @review.user_id = session[:user_id] # assign user to this review
+        redirect_to review_path(@review) # review show page
     end 
 
     def index 
