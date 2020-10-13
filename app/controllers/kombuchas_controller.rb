@@ -14,7 +14,7 @@ class KombuchasController < ApplicationController
         # .build creates the brand instance inside of the kombucha form. 
 
         # the build syntax used here: this is a belongs_to relationship syntax for .build - kombucha belongs to a brand 
-        end 
+    end 
 
     def create 
         @kombucha = Kombucha.new(kombucha_params)

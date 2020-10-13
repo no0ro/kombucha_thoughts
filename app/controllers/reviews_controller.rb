@@ -7,7 +7,12 @@ class ReviewsController < ApplicationController
         @review = @kombucha.reviews.build  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review
         # ^ this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form 
         
-        # @review = Review.new
+
+        # if 
+        # else # unnested, display generic form
+        #     @review = Review.new
+        # end
+        
     end 
 
     def create 
