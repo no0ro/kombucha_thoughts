@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
         # @review = @kombucha.reviews.build  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review
         # # ^ this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form 
         
+
+
         # if nested, aka a :kombucha_id exists, then build review form & associate with this kombucha
         if @kombucha = Kombucha.find_by_id(params[:kombucha_id])
             @review = @kombucha.reviews.build
@@ -30,16 +32,25 @@ class ReviewsController < ApplicationController
         # end 
 
 
+
         # better way
-        @current_user = User.find_by_id(session[:user_id]) if session[:user_id] 
-        @review = current_user.reviews.build(review_params)
+        puts "hello1 "
+        @current_user = User.find_by_id(session[:user_id]) 
+                # @current_user => #<User id: 2, username: "Noelle", email: "noelle@gmail.com", password_digest: [FILTERED], created_at: "2020-09-27 22:40:59", updated_at: "2020-09-27 22:40:59">
+
+        puts "hello2 " 
+        #{@current_user}"
+        # @review = Review.build 
+       
+        @review = @current_user.build_review
+
         if @review.save
             redirect_to review_path(@review)
         else
             render :new
         end
-
     end 
+
 
     def show 
         @review = Review.find_by_id(params[:id])
@@ -48,8 +59,7 @@ class ReviewsController < ApplicationController
 
     def index
         # if nested, aka :kombucha_id exists 
-        if 
-            @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
+        if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
                 # where - grab all reviews associated with this specific kombucha
             @reviews = @kombucha.reviews
 

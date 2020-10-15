@@ -6,7 +6,9 @@ class Kombucha < ApplicationRecord
   has_many :users, through: :reviews #ppl who have reviewed it
   # ^ gives us all the plural instances
 
-   ## brand_attributes (allows 2 versions of Brand to be properly saved to db)
+
+
+  # brand_attributes (allows 2 versions of Brand to be properly saved to db)
   def brand_attributes=(attributes)
     self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
     self.brand  
@@ -14,15 +16,17 @@ class Kombucha < ApplicationRecord
  
   accepts_nested_attributes_for :brand
     # this allows the kombucha model to change the Brand by passing a hash key brand_attributes
+    # this still be there ???
+
+
 
   # validations 
 
   # scope 
 
-  # methods
   ## alpha -- order or flavors?
  
-  ## # if there is already an ice cream with that flavor && brand, throw an error
+ 
 
 
 end
