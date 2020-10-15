@@ -1,39 +1,43 @@
 class ReviewsController < ApplicationController
-    def new 
-        # find kombucha by id
-        @kombucha = Kombucha.find_by_id(params[:kombucha_id]) # (params[:kombucha_id]) refering to reviews params, not kombuchas
-        # ^(params[:kombucha_id]) is specified in form_for hidden field. 
-        
-        @review = @kombucha.reviews.build  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review
-        # ^ this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form 
-        
 
-        # if 
-        # else # unnested, display generic form
-        #     @review = Review.new
-        # end
+
+    def new 
+        # # find kombucha by id
+        # @kombucha = Kombucha.find_by_id(params[:kombucha_id]) # (params[:kombucha_id]) refering to reviews params, not kombuchas
+        # # ^(params[:kombucha_id]) is specified in form_for hidden field. 
+        
+        # @review = @kombucha.reviews.build  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review
+        # # ^ this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form 
+        
+        # if nested, aka a :kombucha_id exists, then build review form & associate with this kombucha
+        if @kombucha = Kombucha.find_by_id(params[:kombucha_id])
+            @review = @kombucha.reviews.build
+        else # unnested, display generic form
+            @review = Review.new
+        end
         
     end 
 
     def create 
         # one way 
-        @review = Review.new(review_params) # pull from what user just ented
-        @review.user_id = session[:user_id] # assign user to this review
+        # @review = Review.new(review_params) # pull from what user just ented
+        # @review.user_id = session[:user_id] # assign user to this review
 
-        if @review.save
-            redirect_to review_path(@review) # review show page
-        else 
-            render :new
-        end 
+        # if @review.save
+        #     redirect_to review_path(@review) # review show page
+        # else 
+        #     render :new
+        # end 
+
 
         # better way
-
-        # @review = current_user.reviews.build(review_params)
-        # if @review.save
-        #     redirect_to review_path(@review)
-        # else
-        #     render :new
-        # end
+        @current_user = User.find_by_id(session[:user_id]) if session[:user_id] 
+        @review = current_user.reviews.build(review_params)
+        if @review.save
+            redirect_to review_path(@review)
+        else
+            render :new
+        end
 
     end 
 

@@ -16,6 +16,7 @@ class KombuchasController < ApplicationController
         # the build syntax used here: this is a belongs_to relationship syntax for .build - kombucha belongs to a brand 
     end 
 
+    
     def create 
         @kombucha = Kombucha.new(kombucha_params)
         @kombucha.user_id = session[:user_id] # pulling from the session id,(aka user.id) to then assign that to the creater of this new kombucha

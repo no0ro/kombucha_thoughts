@@ -1,6 +1,24 @@
-<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h1> 
+
+
+
+<% if params[:kombucha_id] %>
+    <h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h1> 
+<% else %> 
+    <h1> Create a review </h1>
+<% end %>
+
+
 
 <%= form_for(@review) do |f| %>
+    <% if params[:kombucha_id] %>
+        <%= f.hidden_field :kombucha_id %>
+    <% else %>
+       <div>
+        <%= f.label :kombucha_id, "Select a Kombucha" %>
+        <%= f.collection_select :kombucha_id, Kombucha.all, :id, :flavor, include_blank: true %>
+       </div>
+     <% end %>
+
     <div>
         <%= f.label :title %>
         <%= f.text_field :title %>
@@ -15,14 +33,7 @@
         <%= f.label :content  %>
         <%= f.text_area :content, size:"30x10"%>
     </div>
-
-  
-    <div> 
-        <%= f.hidden_field :kombucha_id %>
-    </div>
-    
     <br>
-
     <div>
     <%= f.submit %>
     </div>

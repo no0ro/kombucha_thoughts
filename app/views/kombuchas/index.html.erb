@@ -4,7 +4,7 @@
 <ul>
     <% @kombuchas.each do |kombucha| %>
         <li> 
-        <h2> <%= link_to kombucha.flavor, kombucha_path(kombucha) %> - <%= kombucha.brand.name%>  </h2>
+        <h2> <%= link_to kombucha.flavor, kombucha_path(kombucha) %> - <%=kombucha.brand.name%> </h2>
         <p><%= kombucha.description %></p>
         <%= link_to "Add a Review", new_kombucha_review_path(kombucha) %>
         </li><br>
