@@ -6,8 +6,9 @@ class Kombucha < ApplicationRecord
   has_many :users, through: :reviews #ppl who have reviewed it
   # ^ gives us all the plural instances
 
-
+  # validations
   validates :flavor, presence: :true
+  validate :not_a_duplicate
 
 
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
@@ -20,9 +21,15 @@ class Kombucha < ApplicationRecord
     # this allows the kombucha model to change the Brand by passing a hash key brand_attributes
     # this still be there ???
 
+  def not_a_duplicate
+    # if there is already a kombucha with that flavor && brand, throw an error
+    if Kombucha.find_by(flavor: flavor, brand_id: brand_id)
+      errors.add(:flavor, "has already been added to that brand")
+    end 
+  end 
 
 
-  # validations 
+   
  
 
   # scope 
