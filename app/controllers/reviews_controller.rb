@@ -22,33 +22,35 @@ class ReviewsController < ApplicationController
 
     def create 
         # one way 
-        # @review = Review.new(review_params) # pull from what user just ented
-        # @review.user_id = session[:user_id] # assign user to this review
+        @review = Review.new(review_params) # pull from what user just ented
+        @review.user_id = session[:user_id] # assign user to this review
 
-        # if @review.save
-        #     redirect_to review_path(@review) # review show page
-        # else 
-        #     render :new
-        # end 
+        if @review.save
+            redirect_to review_path(@review) # review show page
+        else 
+            render :new
+        end 
 
 
 
         # better way
-        puts "hello1 "
-        @current_user = User.find_by_id(session[:user_id]) 
-                # @current_user => #<User id: 2, username: "Noelle", email: "noelle@gmail.com", password_digest: [FILTERED], created_at: "2020-09-27 22:40:59", updated_at: "2020-09-27 22:40:59">
+        # tinkering ------------------
+        # puts "hello1 "
+        # @current_user = User.find_by_id(session[:user_id]) 
+        #         # @current_user => #<User id: 2, username: "Noelle", email: "noelle@gmail.com", password_digest: [FILTERED], created_at: "2020-09-27 22:40:59", updated_at: "2020-09-27 22:40:59">
 
-        puts "hello2 " 
+        # puts "hello2 " 
         #{@current_user}"
         # @review = Review.build 
-       
-        @review = @current_user.build_review
+        # tinkering ------------------
 
-        if @review.save
-            redirect_to review_path(@review)
-        else
-            render :new
-        end
+
+        # @review = current_user.reviews.build(review_params)
+        # if @review.save
+        #     redirect_to review_path(@review)
+        # else
+        #     render :new
+        # end
     end 
 
 
