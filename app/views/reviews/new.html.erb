@@ -1,3 +1,5 @@
+<%= render "layouts/errors", locals: {object: @review} %>
+
 <% if params[:kombucha_id] %>
     <h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h1> 
 <% else %> 

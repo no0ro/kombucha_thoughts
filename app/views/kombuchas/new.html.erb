@@ -1,5 +1,5 @@
 <h1>Add a new Kombucha</h1>
-
+<%= render "layouts/errors", locals: {object: @kombucha} %>
 
 <%= form_for(@kombucha) do |f| %>
     <div>
