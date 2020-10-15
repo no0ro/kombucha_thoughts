@@ -27,6 +27,13 @@ class Kombucha < ApplicationRecord
       errors.add(:flavor, "has already been added to that brand")
     end 
   end 
+  # same -- validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
+
+  # for collection_select display in form
+  def flavor_and_brand 
+    "#{flavor} - #{brand.name}"
+  end 
+  # "#{flavor} - #{brand.try(:name)}"
 
 
    

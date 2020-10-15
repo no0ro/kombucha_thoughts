@@ -12,5 +12,5 @@ class Review < ApplicationRecord
 
   # validates: , uniqueness: {scope :name, -> { where(:attibute => value)}
   # Ex:- scope :active, -> {where(:active => true)}}
-  #ice_cream (if already been reviewed aka uniqueness)
+
 end
