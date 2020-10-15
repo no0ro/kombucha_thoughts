@@ -7,6 +7,8 @@ class Kombucha < ApplicationRecord
   # ^ gives us all the plural instances
 
 
+  validates :flavor, presence :true
+
 
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
   def brand_attributes=(attributes)
@@ -21,6 +23,7 @@ class Kombucha < ApplicationRecord
 
 
   # validations 
+ 
 
   # scope 
 
