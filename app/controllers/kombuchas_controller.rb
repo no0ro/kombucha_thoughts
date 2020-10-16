@@ -28,8 +28,10 @@ class KombuchasController < ApplicationController
     end 
 
     def index
-        @kombuchas = Kombucha.all
+        # @kombuchas = Kombucha.all
+        @kombuchas = Kombucha.order_by_rating
     end 
+
 
     def show 
         # vs .find

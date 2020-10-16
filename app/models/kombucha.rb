@@ -17,14 +17,13 @@ class Kombucha < ApplicationRecord
   # written as class method - order alphabetically 
   def self.alpha 
     #order('flavor: :asc') 
-
     order(Arel.sql("#{:flavor} ASC"))
-
   end 
 
   # written as scope method 
-  
-
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
+  # with just joins - issue is we're only getting kombuchas that have actually had thrir average combined with our reveiw
+      # so switched to left_joins
 
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
   def brand_attributes=(attributes)
