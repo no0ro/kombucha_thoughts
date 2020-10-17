@@ -53,3 +53,5 @@ class KombuchasController < ApplicationController
         params.require(:kombucha).permit(:flavor, :description, :buy_again, :brand_id, brand_attributes: [:name]) 
     end 
 end
+
+
