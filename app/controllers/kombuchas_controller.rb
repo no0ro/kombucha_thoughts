@@ -29,7 +29,7 @@ class KombuchasController < ApplicationController
 
     def index
         # @kombuchas = Kombucha.all
-        @kombuchas = Kombucha.order_by_rating
+        @kombuchas = Kombucha.order_by_rating.includes(:brand)
     end 
 
 
