@@ -1,7 +1,7 @@
 module ReviewsHelper
     def display_header(review)
         if params[:kombucha_id] 
-            content_tag(:h1, "Add a review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}") 
+            content_tag(:h1, "Add a Review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}") 
         else 
             content_tag(:h1, "Create a review")
         end 
