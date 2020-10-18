@@ -28,5 +28,8 @@ class SessionsController < ApplicationController
             redirect_to login_path # impt to redirect here! so username isnt persisted
         end 
 
+    end
+    
+    def omniauth
     end 
 end  
