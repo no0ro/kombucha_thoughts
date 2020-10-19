@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
   delete '/logout' => "sessions#destroy"
 
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  get '/auth/aut/google_oauth2/callback' => 'sessions#omniauth'
+  #get '/auth/:provider/callback' => 'sessions#omniauth'
 
   resources :reviews
   
   resources :kombuchas do 
     resources :reviews, only: [:new, :index]
+    
   end 
 
   resources :brands
