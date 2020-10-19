@@ -20,9 +20,11 @@ class SessionsController < ApplicationController
         # once we find the user, ask: 
         # if user exists in system AND the password input matches
         if @user.try(:authenticate, params[:user][:password])
+            ## --
             # if @user && @user.authenticate(password: params[:user][:password]) <- this did not work!
             session[:user_id] = @user.id # set the user id (2) to be saved as the session. store them in our session. this is officially how we say theyre logged in 
             redirect_to user_path(@user)
+        ## elseif
         else
             flash[:error] = "Please try again. Login information is incorrect."
             redirect_to login_path # impt to redirect here! so username isnt persisted
@@ -32,18 +34,15 @@ class SessionsController < ApplicationController
     
     def omniauth
         byebug
+        @user = User.find_or_create_by(:email auth[:info][:email])
     end 
 
-#     def omniauth
-#         @user = User.from_omniauth(auth)
-#         @user.save
-#         session[:user_id] = @user.id
-#         redirect_to home_path
-#       end  
+  
 
-# private  
+    private  
 
-#       def auth
-#         request.env['omniauth.auth']
-#       end
+    # returns omniauth user hash 
+    def auth
+        request.env['omniauth.auth']
+    end
 end  
