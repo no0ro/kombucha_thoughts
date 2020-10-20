@@ -12,16 +12,14 @@ class User < ApplicationRecord
     # authentication w/ bcrypt gem
     has_secure_password
 
-    ## google_omniauth 
-    # def self.from_omniauth(auth)
-    #     where(email: auth.info.email).first_or_initialize do |user|
-    #       user.user_name = auth.info.name
-    #       user.email = auth.info.email
-    #       user.password = SecureRandom.hex
-    #     end
-    #   end
-
-      
+    # to login with omniauth
+    def self.find_or_create_by_google_omniauth(auth)
+        self.find_or_create_by(email: auth[:info][:email]) do |user|
+            # set attributes 
+            user.password = SecureRandom.hex
+            user.username = auth[:info][:name]
+        end         
+    end 
 
     ## github_omniauth 
 end

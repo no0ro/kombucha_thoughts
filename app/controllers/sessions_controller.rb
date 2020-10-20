@@ -33,11 +33,8 @@ class SessionsController < ApplicationController
     end
     
     def omniauth
-        @user = User.find_or_create_by(email: auth[:info][:email]) do |user|
-            user.password = SecureRandom.hex 
-            user.username = auth[:info][:name]
-        end 
-
+        @user = User.find_or_create_by_google_omniauth(auth)
+    
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     end 
