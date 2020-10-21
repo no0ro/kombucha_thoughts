@@ -12,6 +12,13 @@ class SessionsController < ApplicationController
     end
     
     def create 
+        if params[:provider]
+            @user = User.find_or_create_by_google_omniauth(auth)
+
+            session[:user_id] = @user.id
+            redirect_to user_path(@user) 
+
+        else 
         # does the user exist in our system? 
         @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
         
@@ -29,7 +36,7 @@ class SessionsController < ApplicationController
             flash[:error] = "Please try again. Login information is incorrect."
             redirect_to login_path # impt to redirect here! so username isnt persisted
         end 
-
+    end 
     end
     
     def omniauth

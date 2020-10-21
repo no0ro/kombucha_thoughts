@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 # omniauth gems
 gem 'omniauth'
 gem 'omniauth-google-oauth2' # google provider
+gem 'omniauth-github'
 gem 'dotenv-rails' # access to .env file. put info we dont want pushed to Github here
 
 # Use Active Storage variant
