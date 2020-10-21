@@ -7,7 +7,7 @@ class User < ApplicationRecord
     
 
     validates :username, uniqueness: true, presence: true # cant have duplicate usernames
-    # validates :email, presence: true
+    validates :email, presence: true
 
     # authentication w/ bcrypt gem
     has_secure_password
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     end 
 
 
-    # to login with github omniauth - via User Id 
+    # to login with github omniauth - via EMAIL
     def self.find_or_create_by_github_omniauth(auth)
         self.find_or_create_by(email: auth[:info][:email]) do |user|
             # set attributes 
