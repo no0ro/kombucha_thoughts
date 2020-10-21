@@ -12,7 +12,7 @@ class User < ApplicationRecord
     # authentication w/ bcrypt gem
     has_secure_password
 
-    # to login with omniauth
+    # to login with google omniauth - via EMAIL 
     def self.find_or_create_by_google_omniauth(auth)
         self.find_or_create_by(email: auth[:info][:email]) do |user|
             # set attributes 
@@ -21,8 +21,16 @@ class User < ApplicationRecord
         end         
     end 
 
-    ## github_omniauth 
-end
+
+    # to login with github omniauth - via User Id 
+    def self.find_or_create_by_github_omniauth(auth)
+        self.find_or_create_by(email: auth[:info][:email]) do |user|
+            # set attributes 
+            user.password = SecureRandom.hex
+            user.username = auth[:extra][:raw_info][:login]
+        end   
+    end       
+ end
  
 
 ## Both below, are basically just defining a method with the same name like:
