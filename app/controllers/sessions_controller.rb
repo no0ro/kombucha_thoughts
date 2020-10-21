@@ -12,24 +12,16 @@ class SessionsController < ApplicationController
     end
     
     def create 
-        # if params[:provider]
-        #     @user = User.find_or_create_by_google_omniauth(auth)
-
-        #     session[:user_id] = @user.id
-        #     redirect_to user_path(@user) 
-
-        # else 
-
         # does the user exist in our system? 
-        @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
-        
+        @user = User.find_by(username: params[:username]) # find the user in our system via (key: value)
+        # @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
         
 
         # once we find the user, ask: 
         # if user exists in system AND the password input matches
-        if @user.try(:authenticate, params[:user][:password])
+        #if @user.try(:authenticate, params[:user][:password])  
             ## --
-            # if @user && @user.authenticate(password: params[:user][:password]) <- this did not work!
+        if @user && @user.authenticate(password: params[:user][:password]) 
             session[:user_id] = @user.id # set the user id (2) to be saved as the session. store them in our session. this is officially how we say theyre logged in 
             redirect_to user_path(@user)
         ## elseif
@@ -46,7 +38,7 @@ class SessionsController < ApplicationController
         else 
             @user = User.find_or_create_by_google_omniauth(auth)
         end
-        
+
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     end 

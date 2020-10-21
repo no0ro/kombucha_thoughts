@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   end 
 
   resources :brands
-  resources :users, only: [:show]
+  resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

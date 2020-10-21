@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    # authentication w/ bcrypt gem
+    has_secure_password
+
     has_many :reveiws #must come before "through" below, bc we need to tell it that reviews exists first
     has_many :reviewed_kombuchas, through: :reviews, source: :kombucha #how we can 
         # has_many :kombuchas, through: :reviews  # to acceess, do i need to do user.reviews.kombuchas now?
@@ -9,8 +12,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: true, presence: true # cant have duplicate usernames
     validates :email, presence: true
 
-    # authentication w/ bcrypt gem
-    has_secure_password
+  
 
     # to login with google omniauth - via EMAIL 
     def self.find_or_create_by_google_omniauth(auth)
