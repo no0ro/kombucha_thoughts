@@ -1,5 +1,6 @@
 class KombuchasController < ApplicationController
-
+    before_action :set_kombucha
+    before_action :redirect_if_not_logged_in 
     # so you cant create a new kombucha, or delete, without logging in 
  
     def new 
@@ -52,6 +53,11 @@ class KombuchasController < ApplicationController
     def kombucha_params 
         params.require(:kombucha).permit(:flavor, :description, :buy_again, :brand_id, brand_attributes: [:name]) 
     end 
+
+    def set_kombucha
+        @kombucha= Kombucha.find_by(params[:id])
+        redirect_to kombuchas_path if !@kombucha
+     end
 end
 
 

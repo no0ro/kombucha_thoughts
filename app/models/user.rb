@@ -2,7 +2,7 @@ class User < ApplicationRecord
     # authentication w/ bcrypt gem
     has_secure_password
 
-    has_many :reveiws #must come before "through" below, bc we need to tell it that reviews exists first
+    has_many :reviews #must come before "through" below, bc we need to tell it that reviews exists first
     has_many :reviewed_kombuchas, through: :reviews, source: :kombucha #how we can 
         # has_many :kombuchas, through: :reviews  # to acceess, do i need to do user.reviews.kombuchas now?
 

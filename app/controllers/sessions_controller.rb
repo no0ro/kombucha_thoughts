@@ -1,28 +1,39 @@
 class SessionsController < ApplicationController 
+    # skip_before_action only: :create
 
     def welcome 
     end 
 
     def destroy 
-        session.delete(:user_id)
+        session.delete(:user_id) 
+        # session.clear 
+        # flash[:notice] = "Goodbye"
+        puts 'You successfully logged out'
         redirect_to '/'
     end 
 
-    def new
+    def new 
+        # not needed if using form_for :user 
+        # render :login ??
     end
     
     def create 
         # does the user exist in our system? 
-        @user = User.find_by(username: params[:username]) # find the user in our system via (key: value)
+        @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
         # @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
-        
+       # byebug
 
         # once we find the user, ask: 
         # if user exists in system AND the password input matches
         #if @user.try(:authenticate, params[:user][:password])  
             ## --
-        if @user && @user.authenticate(password: params[:user][:password]) 
+        #if @user && @user.authenticate(password: params[:user][:password]) 
+         #if @user && @user.authenticate(params[:user][:password]) 
+
+        if @user && @user.authenticate(user_params[:password]) 
+            session[:username] = @user.username
             session[:user_id] = @user.id # set the user id (2) to be saved as the session. store them in our session. this is officially how we say theyre logged in 
+            # flash[:notice] = "You are now logged in"
             redirect_to user_path(@user)
         ## elseif
         else
@@ -46,6 +57,11 @@ class SessionsController < ApplicationController
   
 
     private  
+
+    def user_params
+        params.require(:user).permit(:email, :username, :password)
+    end 
+
 
     # returns omniauth user hash 
     def auth
