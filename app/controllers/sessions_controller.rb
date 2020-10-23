@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController 
+    skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :omniauth]
     # skip_before_action only: :create
 
     # / --> views/welcome.html.erb
@@ -35,7 +36,6 @@ class SessionsController < ApplicationController
                     # so calling session[:user_id] inside byebug returns 4
             # flash[:notice] = "You are now logged in"
             redirect_to user_path(@user)
-        ## elseif
         else
             flash[:error] = "Please try again. Login information is incorrect."
             redirect_to login_path # impt to redirect here! so username isnt persisted
@@ -43,10 +43,8 @@ class SessionsController < ApplicationController
     
     end
 
-
     def destroy 
         session.delete(:user_id) 
-        # session.clear 
         # flash[:notice] = "Goodbye"
         puts 'You successfully logged out'
         redirect_to '/'
@@ -64,9 +62,8 @@ class SessionsController < ApplicationController
     end 
 
   
-
     private  
-    
+
     # returns omniauth user hash 
     def auth
         request.env['omniauth.auth']
