@@ -1,21 +1,24 @@
-<h1>Shows Kombucha</h1>
-<div>
-    <p> <%= @kombucha.flavor%></p>
-</div>
-
+<h1>?? Title?? Shows Kombucha</h1>
 
 <div>
-    <p> <%= @kombucha.brand.name%></p>
+    <p> Brand: <%= @kombucha.brand.name%></p>
 </div>
 
 <div>
-    <p> <%= @kombucha.description %></p>
+    <p> Flavor: <%= @kombucha.flavor%></p>
+</div>
+ 
+<div>
+    <p> Description: <%= @kombucha.description %></p>
 </div>
 
 <div>
-    <p> Buy Again? <%= @kombucha.buy_again %></p>
+    <p> Buy Again? <%= @kombucha.buy_again %></p> 
+    <br>
 </div>
 
 <%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
 <%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> 
-
+<br>
+<br>
+    <p>    [] TO DO: Change False, To No</p>
