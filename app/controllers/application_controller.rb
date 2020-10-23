@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
 
     private
-
+ 
     # returns the user that is found by the session id.
     # keep this!! bc use it in Users_Controller
     def current_user
