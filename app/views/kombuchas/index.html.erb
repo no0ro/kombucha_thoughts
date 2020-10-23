@@ -6,7 +6,7 @@
         <li> 
         <h2> <%= link_to kombucha.flavor, kombucha_path(kombucha) %> - <%=kombucha.brand.name%> </h2>
         <p><%= kombucha.description %></p>
-        <%= link_to "Add a Review", new_kombucha_review_path(kombucha) %>
+        <%= link_to "Add a Review", new_kombucha_review_path(kombucha) %> | <%= link_to "All Reviews", kombucha_reviews_path(kombucha) %>
         </li><br>
     <% end %>
  </ul>
