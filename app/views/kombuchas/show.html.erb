@@ -16,5 +16,6 @@
     <p> Buy Again? <%= @kombucha.buy_again %></p>
 </div>
 
-<%= link_to "View Reviews" , kombucha_reviews_path(@kombucha) %>
+<%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
+<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> 
 
