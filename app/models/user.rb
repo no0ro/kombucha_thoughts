@@ -33,13 +33,3 @@ class User < ApplicationRecord
     end    
 
  end
-
-
-
-## Both below, are basically just defining a method with the same name like:
-    # def kombuchas 
-    # end
-
-    #has_many :kombuchas, through: :reviews  
-    #has_many :kombuchas 
-    

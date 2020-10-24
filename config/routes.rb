@@ -9,11 +9,7 @@ Rails.application.routes.draw do
 
   delete '/logout' => "sessions#destroy"
 
-  
-  # get '/auth/google_oauth2/callback' => 'sessions#omniauth'
-  # get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/:provider/callback' => 'sessions#omniauth'
-
 
   resources :reviews
   
@@ -22,7 +18,7 @@ Rails.application.routes.draw do
   end 
 
   resources :brands
-  
+
   resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
