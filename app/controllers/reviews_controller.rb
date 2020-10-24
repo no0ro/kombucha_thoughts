@@ -64,11 +64,16 @@ class ReviewsController < ApplicationController
         if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
                 # where - grab all reviews associated with this specific kombucha
             @reviews = @kombucha.reviews
-
         else 
         # else unnested 
             @reviews = Review.all
         end 
+    end 
+
+    def edit 
+    end 
+
+    def update 
     end 
 
 
