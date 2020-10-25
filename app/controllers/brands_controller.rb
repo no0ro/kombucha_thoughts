@@ -5,7 +5,7 @@ class BrandsController < ApplicationController
         @brands = Brand.all
     end 
 
-    # ?
+
     # def show 
     # end 
 end
