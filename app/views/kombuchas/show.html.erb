@@ -14,11 +14,13 @@
 
 <div>
     <p> Buy Again? <%= @kombucha.buy_again %></p> 
+     <p>    [] TO DO: Change False, To No</p>
     <br>
 </div>
 
 <%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
-<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> 
+<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> |
+<%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> 
 <br>
 <br>
-    <p>    [] TO DO: Change False, To No</p>
+   
