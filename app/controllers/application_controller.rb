@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?
         #  makes the current_user controller method available to the view
         # :logged_in? --> 
-        # :current_user --> Users_Controller, 
+        # :current_user --> Users_Controller, Views/Layouts/application.html.erb
 
 
     private
