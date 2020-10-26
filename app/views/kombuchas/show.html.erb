@@ -19,8 +19,6 @@
     <br>
 </div>
 
-<%=link_to "Delete This Kombucha", kombucha_path(@kombuchas), method: :delete, data: {confirm: "Are you sure?"} %> 
-
 
 <%= link_to "Write A Review", new_kombucha_review_path(@kombuchas) %> |
 <%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombuchas) %> |

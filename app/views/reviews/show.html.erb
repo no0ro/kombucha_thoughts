@@ -1,10 +1,16 @@
 <%# <--! /reviews/3--> %>
-<h1> Review for: <%= @reviews.kombucha.flavor %> - <%= @reviews.kombucha.brand.name %> </h1>
+<h3> TO DO </h3>
+<h5> [] helper for Written by: username & created_at (& review/index)</h5>
 
+
+
+<h1> Review for: <%= @reviews.kombucha.flavor %> - <%= @reviews.kombucha.brand.name %> </h1>
+<p> Written by: <%= @reviews.user.username%> on <%=@reviews.user.created_at %> </p>
+
+<br><br>
 <div>
     <p> Title: <%= @reviews.title%></p>
 </div>
-
 
 <div>
     <p> Rating: <%= @reviews.rating%></p>
@@ -13,10 +19,10 @@
 <div>
     <p> Content: <%= @reviews.content %></p>
 </div>
-
+<br><br>
 <div>
 <% if logged_in? && @reviews.user_id == current_user.id %>
-<%# <%=link_to "Edit Review", edit_review_path(@recview)%> %>
+    <%=link_to "Edit Review", edit_review_path(@reviews) %> |
     <%=link_to "Delete This Review", review_path(@reviews), method: :delete, data: {confirm: "Are you sure?"} %> 
 <% end %>
 
