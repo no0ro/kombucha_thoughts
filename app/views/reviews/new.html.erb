@@ -2,6 +2,7 @@
 
 <%= render partial: 'layouts/errors', locals: {object: @review} %>
 
+<!-- action='/reviews', method='post'-->
 <%= form_for(@review) do |f| %>
     <% if params[:kombucha_id] %>
         <%= f.hidden_field :kombucha_id %>

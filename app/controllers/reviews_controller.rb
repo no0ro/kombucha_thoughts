@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
 
 
     def show 
-        @review = Review.find_by_id(params[:id])
+        @reviews = Review.find_by_id(params[:id])
     end 
 
 
@@ -70,10 +70,12 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-    def edit 
-    end 
-
-    def update 
+    def destroy 
+        @review = Review.find(params[:id])
+        if @review.present?
+            @review.destroy 
+            redirect_to reviews_path
+        end
     end 
 
 

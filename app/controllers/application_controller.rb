@@ -6,14 +6,18 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user, :logged_in?
         #  makes the current_user controller method available to the view
+        # :logged_in? --> 
+        # :current_user --> Users_Controller, 
 
 
     private
  
     # returns the user that is found by the session id.
-    # keep this!! bc use it in Users_Controller
+  
     def current_user
+        # returns user that is found by session id. only hit db once if instance vari exists
         @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id] 
+            # @current_user ||= User.find_by_id(session[:user_id])
     end 
 
         # # this feels redundent to ^^
@@ -22,8 +26,9 @@ class ApplicationController < ActionController::Base
         # end 
 
     def logged_in?
+        # (!!) returns everything into boolean 
         !!session[:user_id]
-        # (!!current_user)
+            # (!!current_user)
     end 
 
     # this is working!! 

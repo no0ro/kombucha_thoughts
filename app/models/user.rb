@@ -2,7 +2,10 @@ class User < ApplicationRecord
     has_secure_password # authentication w/ bcrypt gem
 
     # --------------------
-    has_many :reviews #must come before "through" below, bc we need to tell it that reviews exists first
+    has_many :reviews, dependent: :destroy #must come before "through" below, bc we need to tell it that reviews exists first
+      # Add dependent: :destroy so reviews related to a specific User get deleted if the Review is deleted
+
+    
     has_many :reviewed_kombuchas, through: :reviews, source: :kombucha #how we can 
         # has_many :kombuchas, through: :reviews  # to acceess, do i need to do user.reviews.kombuchas now?
 

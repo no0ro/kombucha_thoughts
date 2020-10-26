@@ -2,7 +2,8 @@ class Kombucha < ApplicationRecord
   belongs_to :brand
   belongs_to :user # the creator of it #could rename belongs_to creator
   # ^ gives us all the singular instances 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+    # Add dependent: :destroy so reviews related to a specific Kombucha get deleted if the Review is deleted
   has_many :users, through: :reviews #ppl who have reviewed it
   # ^ gives us all the plural instances
 

@@ -1,5 +1,5 @@
 class Brand < ApplicationRecord
-    has_many :kombuchas
+    has_many :kombuchas, dependent: :destroy
 
     # --------------------------
     # validations 

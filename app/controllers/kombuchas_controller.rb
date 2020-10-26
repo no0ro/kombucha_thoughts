@@ -57,12 +57,12 @@ class KombuchasController < ApplicationController
         end 
     end 
 
-    # def destroy 
+    def destroy 
     # must change to dependant: :destry in models. 
     #     @kombucha = Kombucha.find_by(id: params[:id])
     #     @kombucha.destroy 
     #     redirect_to kombuchas_path
-    # end  
+    end  
 
     private 
 

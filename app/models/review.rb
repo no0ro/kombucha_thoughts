@@ -12,4 +12,6 @@ class Review < ApplicationRecord
 
   # validates: , uniqueness: {scope :name, -> { where(:attibute => value)}
   # Ex:- scope :active, -> {where(:active => true)}}
+
+  # validates :review_id, presence: true
 end

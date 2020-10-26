@@ -1,15 +1,25 @@
-<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h1>
-
+<h1> Review for: <%= @reviews.kombucha.flavor %> - <%= @reviews.kombucha.brand.name %> </h1>
 
 <div>
-    <p> Title: <%= @review.title%></p>
+    <p> Title: <%= @reviews.title%></p>
 </div>
 
 
 <div>
-    <p> Rating: <%= @review.rating%></p>
+    <p> Rating: <%= @reviews.rating%></p>
 </div>
 
 <div>
-    <p> Content: <%= @review.content %></p>
+    <p> Content: <%= @reviews.content %></p>
 </div>
+
+<div>
+<%# <% if logged_in? && @reviews.user_id == current_user.id %> %>
+<%# <%=link_to "Edit Review", edit_review_path(@recview)%> %>
+
+     
+<%=link_to "Delete Review", review_path(@reviews), method: :delete, data: {confirm: "Are you sure?"} %>
+   
+
+
+<%# <% end %> %>
