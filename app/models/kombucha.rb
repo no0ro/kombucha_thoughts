@@ -56,12 +56,17 @@ class Kombucha < ApplicationRecord
   end 
 
 
-  # for collection_select display in form
-  def flavor_and_brand 
-    "#{flavor} - #{brand.name}"
+  # for collection_select display in /reviews/new
+  def flavor_and_brand
+    "#{flavor} - #{brand.name}"  
      # "#{flavor} - #{brand.try(:name)}"
   end 
  
+  # havent used yet
+  def brand_and_flavor 
+    "#{brand.name} -  #{flavor}"  
+     # "#{flavor} - #{brand.try(:name)}"
+  end 
 
    
  
