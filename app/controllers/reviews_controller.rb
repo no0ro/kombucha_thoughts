@@ -71,6 +71,16 @@ class ReviewsController < ApplicationController
         end 
     end 
 
+    # GET 
+    def edit 
+        # got here from link inside /reviews/16 that only appears if YOU created the review
+    end 
+
+     # POST /reviews/16/edit
+     def update 
+
+     end 
+
     def destroy 
         @review = Review.find(params[:id])
         if @review.present?
