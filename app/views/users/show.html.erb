@@ -1,9 +1,17 @@
 <h1> Welcome <%= @user.username %> you have signed in.</h1>
 
-<h3>Kombuchas reviewed by <%=@user.username%>:</h3>
+<h3>My Reviews:</h3>
 <ul>
-  <% @user.reviewed_kombuchas.each do |kombucha|%>
-  <%# <%= reviewed_kombuchas aka like user.reviews.kombuchas ish %>
-  <li> <%= link_to kombucha.flavor_and_brand, kombucha_path(kombucha)%> </li>
+  <% @user.reviews.each do |review|%>
+    <li> 
+      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> <br>
+      Title: <%=  review.title %> <br>
+      Content: <%=  review.content  %> <br>
+      Date Created: <%=  review.created_at  %> <br>
+      <%=link_to "Edit", edit_review_path(review) %> | 
+      <%=link_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %> 
+    </li>
+    <br>
   <% end %>
 </ul>
+
