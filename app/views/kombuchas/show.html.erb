@@ -1,26 +1,30 @@
 <h1>?? Title?? Shows Kombucha</h1>
 
 <div>
-    <p> Brand: <%= @kombucha.brand.name%></p>
+    <p> Brand: <%= @kombuchas.brand.name%></p>
 </div>
 
 <div>
-    <p> Flavor: <%= @kombucha.flavor%></p>
+    <p> Flavor: <%= @kombuchas.flavor%></p>
 </div>
  
 <div>
-    <p> Description: <%= @kombucha.description %></p>
+    <p> Description: <%= @kombuchas.description %></p>
 </div>
 
 <div>
-    <p> Buy Again? <%= @kombucha.buy_again %></p> 
+    <p> Buy Again? <%= @kombuchas.buy_again %></p> 
      <p>    [] TO DO: Change False, To No</p>
+     <p> Created By:  <%= @kombuchas.user.username %></p> 
     <br>
 </div>
 
-<%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
-<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> |
-<%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> 
+<%=link_to "Delete This Kombucha", kombucha_path(@kombuchas), method: :delete, data: {confirm: "Are you sure?"} %> 
+
+
+<%= link_to "Write A Review", new_kombucha_review_path(@kombuchas) %> |
+<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombuchas) %> |
+<%= link_to "Edit Kombucha", edit_kombucha_path(@kombuchas) %> 
 <br>
 <br>
    

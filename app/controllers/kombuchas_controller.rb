@@ -13,7 +13,7 @@ class KombuchasController < ApplicationController
     # GET /kombuchas/1
     def show 
         # vs .find
-        @kombucha = Kombucha.find_by_id(params[:id])
+        @kombuchas = Kombucha.find_by_id(params[:id])
     end 
 
     # GET /kombuchas/new
@@ -59,9 +59,9 @@ class KombuchasController < ApplicationController
 
     def destroy 
     # must change to dependant: :destry in models. 
-    #     @kombucha = Kombucha.find_by(id: params[:id])
-    #     @kombucha.destroy 
-    #     redirect_to kombuchas_path
+        #  @kombucha = Kombucha.find_by(id: params[:id])
+        @kombucha.destroy 
+         redirect_to kombuchas_path
     end  
 
     private 
