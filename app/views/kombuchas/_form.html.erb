@@ -11,11 +11,6 @@
         <%= f.text_field :description %>
     </div>
 
-    <div> 
-        <%= f.label :buy_again %>
-        <%= f.check_box :buy_again  %>
-    </div>
-
     <p> Select an Existing Brand: </p>
     <div>
         <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select One' %>
