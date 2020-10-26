@@ -3,11 +3,10 @@ class Brand < ApplicationRecord
 
     # --------------------------
     # validations 
-
-    # uncomment below
-    # validates :name, presence: true, uniqueness: true 
-    #    ^ delete test items w/o brands first! or will break 
-
-    # scope -- uses alpha from kombucha model?
-    # scope :alpha --> {order(:name)}
+    validates :name, presence: true, uniqueness: true 
+        #    ^ delete test items w/o brands first! or will break 
+        # uniqueness??
+    
+    # scope -- uses abc from kombucha model?
+    scope :abc_name, -> { order(:name) }
 end

@@ -10,6 +10,9 @@ class Kombucha < ApplicationRecord
   # ----------------------------
   # validations --> notice plurel vs not here. bc custom or not
   validates :flavor, presence: :true
+  validates :description, presence: :true 
+
+
   validate :not_a_duplicate
 
 
@@ -17,9 +20,13 @@ class Kombucha < ApplicationRecord
   # Instance Methods 
 
   # written as class method - order alphabetically 
-  def self.alpha 
-    #order('flavor: :asc') 
-    order(Arel.sql("#{:flavor} ASC"))
+  # def self.abc_name 
+  #   #order('flavor: :asc') 
+  #   order(Arel.sql("#{:flavor} ASC"))
+  # end 
+
+  def self.abc_name
+    order(:flavor) 
   end 
 
   # written as scope method 
