@@ -56,6 +56,7 @@ class ReviewsController < ApplicationController
 
     def show 
         @reviews = Review.find_by_id(params[:id])
+        @kombucha = @reviews.kombucha
     end 
 
 
