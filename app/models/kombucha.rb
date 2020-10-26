@@ -35,7 +35,7 @@ class Kombucha < ApplicationRecord
   end 
  
   # ----------!!!------------------- 
-  accepts_nested_attributes_for :brand
+  # accepts_nested_attributes_for :brand
     # this allows the kombucha model to change the Brand by passing a hash key brand_attributes
     # this still be there ???
   # ---------------------------
@@ -44,15 +44,11 @@ class Kombucha < ApplicationRecord
   # same -- validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
   def not_a_duplicate
     # if there is already a kombucha with that flavor && brand, throw an error
-    if Kombucha.find_by(flavor: flavor, brand_id: brand_id)
+    kombucha = Kombucha.find_by(flavor: flavor, brand_id: brand_id)
+    if !!kombucha && kombucha != self 
+      # if statement necessary so we can update
       errors.add(:flavor, "has already been added to that brand")
     end 
-
-    # OR 
-    # kombucha = Kombucha.find_by(flavor: flavor, brand_id: brand_id)
-    # if !!kombucha && kombucha != self 
-    #   errors.add(:flavor, "has already been added to that brand")
-    # end 
   end 
 
 
