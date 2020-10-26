@@ -9,5 +9,7 @@
 <ol>
 <% @brands.each do |brand| %>
     <li> <%= brand.name%>  </li>
+    <%=link_to "Delete This Brand", brand_path(brand), method: :delete, data: {confirm: "Are you sure?"} %> 
+
 <% end %>
 </ol>
