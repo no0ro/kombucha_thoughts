@@ -49,6 +49,7 @@ class KombuchasController < ApplicationController
 
     # PATCH/PUT /kombuchas/1
     def update 
+        # [] TO DO: if set_kombucha -- use helper
         if @kombucha.update(kombucha_params)
             redirect_to kombucha_path(@kombucha)
             #notice: "Kombucha successfully updated"

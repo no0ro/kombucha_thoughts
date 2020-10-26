@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    #before_action :set_review[:]
 
     def new 
         # # find kombucha by id
@@ -55,6 +56,7 @@ class ReviewsController < ApplicationController
 
 
     def show 
+        # set_review?
         @reviews = Review.find_by_id(params[:id])
         @kombucha = @reviews.kombucha
     end 
@@ -73,12 +75,14 @@ class ReviewsController < ApplicationController
 
     # GET /reviews/:id/edit
     def edit 
+        # set_review??
         @review = Review.find_by_id(params[:id])
         # got here from link inside /reviews/16 that only appears if YOU created the review
     end 
 
      # POST /reviews/:id
      def update 
+        #set_review?
         @review = Review.find_by_id(params[:id])
         if @review.update(review_params) 
             redirect_to review_path(@review)
@@ -105,4 +109,12 @@ class ReviewsController < ApplicationController
         params.require(:review).permit(:kombucha_id, :content, :title, :rating)
                 #:brand_id, brand_attributes: [:name] 
     end 
+
+    # def set_review
+    #     @review = Review.find_by(id: params[:id])
+    #     redirect_to reviewss_path if !@review
+    # end 
+    # look @ kombucha for me deeets
+    
+    
 end
