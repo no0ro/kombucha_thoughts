@@ -1,0 +1,35 @@
+ <%# <%= display_header(@review) %> %>
+
+<%# <%= render partial: 'layouts/errors', locals: {object: @review} %> %>
+<h1>Edit Review</h1>
+
+<!-- action='/reviews', method='post'-->
+<%= form_for(@review) do |f| %>
+    <% if params[:kombucha_id] %>
+        <%= f.hidden_field :kombucha_id %>
+    <% else %>
+       <div>
+        <%= f.label :kombucha_id, "Select a Kombucha" %>
+        <%= f.collection_select :kombucha_id, Kombucha.alpha, :id, :flavor_and_brand, include_blank: true %>
+       </div>
+     <% end %>
+
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <br>
+    <div> 
+        <%= f.label :rating %>
+        <%= f.number_field :rating, min:0, max:5 %>
+    </div>
+    <br>
+    <div>
+        <%= f.label :content  %>
+        <%= f.text_area :content, size:"30x10"%>
+    </div>
+    <br>
+    <div>
+    <%= f.submit %>
+    </div>
+<% end %>  

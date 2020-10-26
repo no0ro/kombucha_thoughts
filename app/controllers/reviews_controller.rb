@@ -71,14 +71,21 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-    # GET 
+    # GET /reviews/:id/edit
     def edit 
+        @review = Review.find_by_id(params[:id])
         # got here from link inside /reviews/16 that only appears if YOU created the review
     end 
 
-     # POST /reviews/16/edit
+     # POST /reviews/:id
      def update 
-
+        @review = Review.find_by_id(params[:id])
+        if @review.update(review_params) 
+            redirect_to review_path(@review)
+            #notice: "Review successfully updated"
+        else 
+            render :edit
+        end 
      end 
 
     def destroy 
