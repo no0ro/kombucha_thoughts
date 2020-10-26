@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   resources :kombuchas do 
     resources :reviews, only: [:new, :index]
+    # /kombuchas/:kombucha_id/reviews/new
+    # /kombuchas/:kombucha_id/reviews   
   end 
 
   resources :brands
