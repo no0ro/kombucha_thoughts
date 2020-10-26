@@ -17,10 +17,13 @@
     <br>
 </div>
 
+<% if logged_in? && @kombuchas.user_id == current_user.id %>
+<%= link_to "Edit Kombucha", edit_kombucha_path(@kombuchas) %> 
+<% end %>
 
 <%= link_to "Write A Review", new_kombucha_review_path(@kombuchas) %> |
-<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombuchas) %> |
-<%= link_to "Edit Kombucha", edit_kombucha_path(@kombuchas) %> 
+<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombuchas) %> 
+
 <br>
 <br>
    
