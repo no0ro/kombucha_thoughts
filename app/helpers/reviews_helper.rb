@@ -1,5 +1,6 @@
 module ReviewsHelper
     def display_header(review)
+        # in views/reviews/edit.html.erb
         if params[:kombucha_id] 
             content_tag(:h1, "Add a Review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}") 
         else 
@@ -7,10 +8,12 @@ module ReviewsHelper
         end 
     end 
 
-    def reviewed_by(reviews)
-        content_tag(:p, "Review by: #{@reviews.user.username} on #{@reviews.date_formatted}")
-    end 
 
+    def reviewed_by(review)
+        # in views/reviews/show .....(later index)
+        content_tag(:p, "Review by: #{@review.user.username} on #{@review.date_formatted}")
+    end 
+        # returns: "Review by: UserName on 1-21-2020"
 
 
 end
