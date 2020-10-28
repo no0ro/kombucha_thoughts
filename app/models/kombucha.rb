@@ -20,19 +20,17 @@ class Kombucha < ApplicationRecord
   # Instance Methods 
 
   # written as class method - order alphabetically 
-  # def self.abc_name 
-  #   #order('flavor: :asc') 
-  #   order(Arel.sql("#{:flavor} ASC"))
-  # end 
-
+  # used in reviews/new view, but on the Kombucha class
   def self.abc_name
     order(:flavor) 
   end 
 
   # written as scope method 
+  # --> used in KombController#index
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
       # with just joins - issue is we're only getting kombuchas that have actually had thrir average combined with our reveiw
           # so switched to left_joins
+      
 
       
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
