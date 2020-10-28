@@ -1,28 +1,28 @@
 <h1>?? Title?? Shows Kombucha</h1>
 
 <div>
-    <p> Brand: <%= @kombuchas.brand.name%></p>
+    <p> Brand: <%= @kombucha.brand.name%></p>
 </div>
 
 <div>
-    <p> Flavor: <%= @kombuchas.flavor%></p>
+    <p> Flavor: <%= @kombucha.flavor%></p>
 </div>
  
 <div>
-    <p> Description: <%= @kombuchas.description %></p>
+    <p> Description: <%= @kombucha.description %></p>
 </div>
 
 <div>
-     <p> Created By:  <%= @kombuchas.user.username %></p> 
+     <p> Created By:  <%= @kombucha.user.username %></p> 
     <br>
 </div>
 
-<% if logged_in? && @kombuchas.user_id == current_user.id %>
-<%= link_to "Edit Kombucha", edit_kombucha_path(@kombuchas) %> 
+<% if logged_in? && @kombucha.user_id == current_user.id %>
+<%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> 
 <% end %>
 
-<%= link_to "Write A Review", new_kombucha_review_path(@kombuchas) %> |
-<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombuchas) %> 
+<%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
+<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> 
 
 <br>
 <br>

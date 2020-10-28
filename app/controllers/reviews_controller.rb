@@ -1,7 +1,27 @@
 class ReviewsController < ApplicationController
+    before_action :set_review, only:[:show, :edit, :update, :destroy]
     before_action :redirect_if_not_logged_in
-    #before_action :set_review[:]
+   
 
+    # GET /reviews 
+    # (???) GET /kombuchas/:id/reviews 
+    def index
+        # if nested, aka :kombucha_id exists 
+        if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
+                # where - grab all reviews associated with this specific kombucha
+            @reviews = @kombucha.reviews
+        else 
+        # else unnested 
+            @reviews = Review.all
+        end 
+    end 
+
+
+    def show 
+        @kombucha = @review.kombucha
+    end 
+
+   
     def new 
         # # find kombucha by id
         # @kombucha = Kombucha.find_by_id(params[:kombucha_id]) # (params[:kombucha_id]) refering to reviews params, not kombuchas
@@ -55,52 +75,29 @@ class ReviewsController < ApplicationController
     end 
 
 
-    def show 
-        # set_review?
-        @reviews = Review.find_by_id(params[:id])
-        @kombucha = @reviews.kombucha
-    end 
-
-
-    def index
-        # if nested, aka :kombucha_id exists 
-        if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
-                # where - grab all reviews associated with this specific kombucha
-            @reviews = @kombucha.reviews
-        else 
-        # else unnested 
-            @reviews = Review.all
-        end 
-    end 
-
     # GET /reviews/:id/edit
     def edit 
-        # set_review??
-        @review = Review.find_by_id(params[:id])
-        # got here from link inside /reviews/16 that only appears if YOU created the review
+        # link only appears if YOU created the review
+            # got here from link inside /reviews/16 
     end 
 
-     # POST /reviews/:id
-     def update 
-        #set_review?
-        @review = Review.find_by_id(params[:id])
+
+    # POST /reviews/:id
+    def update 
         if @review.update(review_params) 
             redirect_to review_path(@review)
             #notice: "Review successfully updated"
         else 
             render :edit
         end 
-     end 
+    end 
 
     def destroy 
-        @review = Review.find(params[:id])
         if @review.present?
             @review.destroy 
             redirect_to reviews_path
         end
     end 
-
-
 
 
     private 
@@ -110,11 +107,9 @@ class ReviewsController < ApplicationController
                 #:brand_id, brand_attributes: [:name] 
     end 
 
-    # def set_review
-    #     @review = Review.find_by(id: params[:id])
-    #     redirect_to reviewss_path if !@review
-    # end 
-    # look @ kombucha for me deeets
-    
+    def set_review
+        @review = Review.find_by(id: params[:id])
+        redirect_to reviews_path if !@review
+    end 
     
 end
