@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
    
 
     # GET /reviews 
-    # (???) GET /kombuchas/:id/reviews 
+    # GET /kombuchas/:id/reviews 
     def index
         # if nested, aka :kombucha_id exists 
         if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
