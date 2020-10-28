@@ -1,8 +1,7 @@
 class KombuchasController < ApplicationController
     before_action :set_kombucha, only:[:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in 
-    # so you cant create a new kombucha, or delete, without logging in 
-
+    before_action :require_login
+    
 
     # GET /kombuchas
     def index

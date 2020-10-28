@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController 
-    skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :omniauth]
-    # ^^ ?? is this necessary??
-    # skip_before_action only: :create
+    skip_before_action :require_login, only: [:new, :create, :omniauth]
+        # ^ necessary bc, in App Controller we `before_action :require_login`
 
-    # / --> views/welcome.html.erb
+    # / (views/welcome.html.erb)
     def welcome 
     end 
 

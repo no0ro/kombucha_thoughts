@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
-    #before_action :set_user, only: [:show]
-    skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :show]
-    # :current_user  used in #create 
+    skip_before_action :require_login, only: [:new, :create]
+        # ^ necessary bc `before_action :require_login ` in AppController
+        # NOTE :current_user  --> in #show 
+
 
     # GET /signup 
     def new 
-        # Breaks if i remove this.  error in _errors
         @user = User.new
     end 
 
     # POST /signup
     def create 
         @user = User.new(user_params)
-        if @user.save
-            # login the user
+
+        if @user.save # login the user
             session[:user_id] = @user.id #log them in
             redirect_to user_path(@user)
         else 
@@ -21,26 +21,22 @@ class UsersController < ApplicationController
         end 
     end 
 
+    # GET /users/:id
     def show 
-        @some_user = User.find(params[:id])
+        @some_user = User.find(params[:id]) 
+        # ^ dont want this before_action, bc then if doenst check anything
 
         if @some_user.id != session[:user_id]
+                # notice: "You do Not have access to this users account"
             redirect_to '/' 
-            # change this ^^ to be a better redirect / Add Error Message
-        else 
+                # ERROR: change this ^^ to be a better redirect / Add Error Message
+        else # assign current_user(from app_cont.) to the instance vari @user
             @user = current_user  # looks them up by session[:user_id]
-            # session[:user_id]
         end
     end 
 
     private 
-    def set_user #keep
-        @user = User.find(params[:id])
-    end 
-
     def user_params 
         params.require(:user).permit(:username, :email, :password)
-        # .require object, .permit attributes
     end 
-
 end

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only:[:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
+    before_action :require_login
    
 
     # GET /reviews 
@@ -53,7 +53,6 @@ class ReviewsController < ApplicationController
         end 
 
 
-
         # better way
         # tinkering ------------------
         # puts "hello1 "
@@ -78,7 +77,7 @@ class ReviewsController < ApplicationController
     # GET /reviews/:id/edit
     def edit 
         # link only appears if YOU created the review
-            # got here from link inside /reviews/16 
+        # got here from link inside /reviews/16 
     end 
 
 
