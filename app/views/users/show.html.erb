@@ -4,10 +4,11 @@
 <ul>
   <% @user.reviews.each do |review|%>
     <li> 
-      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> <br>
-      Title: <%=  review.title %> <br>
+      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> 
+      Title: <%=  review.title %>   <br>
       Content: <%=  review.content  %> <br>
-      Date Created: <%=  review.created_at  %> <br>
+      Rating: <%=  review.rating %><br>
+      Reviewed on: <%=  review.date_formatted%> <br>
       <%=link_to "Edit", edit_review_path(review) %> | 
       <%=link_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %> 
     </li>
