@@ -4,8 +4,8 @@
 <ul>
   <% @user.reviews.each do |review|%>
     <li> 
-      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> 
-      Title: <%=  review.title %>   <br>
+      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> <br>
+      Title: <%=  review.title %> <br>
       Content: <%=  review.content  %> <br>
       Rating: <%=  review.rating %><br>
       Reviewed on: <%=  review.date_formatted%> <br>
