@@ -5,8 +5,7 @@
 
 
 <h1> Review for: <%= @reviews.kombucha.flavor %> - <%= @reviews.kombucha.brand.name %> </h1>
-<p> Reviewed by: <%= @reviews.user.username%> on <%=@reviews.date_formatted %> </p>
-
+<%=reviewed_by(@reviews)%> 
 <br><br>
 <div>
     <p> Title: <%= @reviews.title%></p>

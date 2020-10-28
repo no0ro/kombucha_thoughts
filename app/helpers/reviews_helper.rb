@@ -6,6 +6,13 @@ module ReviewsHelper
             content_tag(:h1, "Create a review")
         end 
     end 
+
+    def reviewed_by(reviews)
+        content_tag(:p, "Review by: #{@reviews.user.username} on #{@reviews.date_formatted}")
+    end 
+
+
+
 end
 
 
