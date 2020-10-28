@@ -13,8 +13,7 @@ class User < ApplicationRecord
 
     # --------------------
     validates :username, uniqueness: true, presence: true # cant have duplicate usernames
-    validates :email, presence: true
-    # validatios: use titlecase 
+    validates :email, uniqueness: true, presence: true
 
     # --------------------
     # to login with google omniauth - via EMAIL 

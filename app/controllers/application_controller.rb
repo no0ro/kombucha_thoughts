@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     # Finally write a partial which displays the session user email
     before_action :redirect_if_not_logged_in
 
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :date_formatter
         #  makes the current_user controller method available to the view
         # :logged_in? --> 
         # :current_user --> Users_Controller, Views/Layouts/application.html.erb
