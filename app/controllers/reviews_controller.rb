@@ -84,8 +84,8 @@ class ReviewsController < ApplicationController
     # POST /reviews/:id
     def update 
         if @review.update(review_params) 
+            flash[:notice] = "Review successfully updated"
             redirect_to review_path(@review)
-            #notice: "Review successfully updated"
         else 
             render :edit
         end 

@@ -49,7 +49,7 @@ class KombuchasController < ApplicationController
         # [] TO DO: if set_kombucha -- use helper
         if @kombucha.update(kombucha_params)
             redirect_to kombucha_path(@kombucha)
-            #notice: "Kombucha successfully updated"
+            flash[:notice] =  "Kombucha successfully updated"
         else 
             render :edit
         end 
