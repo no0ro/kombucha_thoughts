@@ -16,12 +16,13 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-
+    # GET /reviews/:id
     def show 
         @kombucha = @review.kombucha
     end 
 
-   
+    # GET /reviews/:id (unnested)
+    #  (nested option?) 
     def new 
         # # find kombucha by id
         # @kombucha = Kombucha.find_by_id(params[:kombucha_id]) # (params[:kombucha_id]) refering to reviews params, not kombuchas
@@ -41,13 +42,15 @@ class ReviewsController < ApplicationController
         
     end 
 
+    # POST /reviews
     def create 
         # one way 
         @review = Review.new(review_params) # pull from what user just ented
         @review.user_id = session[:user_id] # assign user to this review
 
         if @review.save
-            redirect_to review_path(@review) # review show page
+            redirect_to review_path(@review) #, notice: 'Review was successfully created.' 
+             # review show page
         else 
             render :new
         end 
@@ -81,16 +84,17 @@ class ReviewsController < ApplicationController
     end 
 
 
-    # POST /reviews/:id
+    # PATCH/PUT /reviews/:id
     def update 
         if @review.update(review_params) 
             flash[:notice] = "Review successfully updated"
-            redirect_to review_path(@review)
+            redirect_to review_path(@review) #, notice: "Review was successfully updated." 
         else 
             render :edit
         end 
     end 
 
+    # DELETE /reviews/:id (?????)
     def destroy 
         if @review.present?
             @review.destroy 

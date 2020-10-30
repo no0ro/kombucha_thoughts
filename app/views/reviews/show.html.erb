@@ -1,7 +1,9 @@
 <%# <--! /reviews/3--> %>
 <h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h1>
 <br><br>
-<%=flash[:notice]%>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <div>
     <p> Title: <%= @review.title%></p>

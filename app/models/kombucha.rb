@@ -69,12 +69,5 @@ class Kombucha < ApplicationRecord
      # "#{flavor} - #{brand.try(:name)}"
   end 
 
-   
- 
-
-  # scope 
-
-  ## alpha -- order or flavors?
-
 end
 
