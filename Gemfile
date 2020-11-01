@@ -34,6 +34,17 @@ gem 'dotenv-rails' # access to .env file. put info we dont want pushed to Github
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Styling 
+# Use bootstrap gem for styling
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+# Supports bootstrap
+gem 'sprockets-rails', '~> 3.2'
+# Supports bootstrap
+gem 'jquery-rails', '~> 4.4'
+# Use font awesome for icons
+gem 'font-awesome-rails', '~> 4.7'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

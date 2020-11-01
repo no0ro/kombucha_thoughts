@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+
+ .field{
+    /* padding: 2px; */
+    background-color: rgb(0, 162, 255);
+    /* display: table; */
+  }
+
+ .field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+    font-family: 'Courier New', Courier, monospace
+  }
+  
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
