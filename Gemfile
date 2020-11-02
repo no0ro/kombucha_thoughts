@@ -37,6 +37,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Styling 
 # Use bootstrap gem for styling
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'sassc-rails', '>= 2.1.0'
 # Supports bootstrap
 gem 'sprockets-rails', '~> 3.2'
 # Supports bootstrap
