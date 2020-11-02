@@ -12,7 +12,6 @@ class Kombucha < ApplicationRecord
   validates :flavor, presence: :true
   validates :description, presence: :true 
 
-
   validate :not_a_duplicate
 
 
@@ -30,7 +29,10 @@ class Kombucha < ApplicationRecord
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
       # with just joins - issue is we're only getting kombuchas that have actually had thrir average combined with our reveiw
           # so switched to left_joins
-      
+
+  # display the average rating 
+  # scope :average_rating, -> {Kombucha.joins(:reviews).group(:id).average(:rating)}
+
 
       
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
@@ -45,7 +47,6 @@ class Kombucha < ApplicationRecord
     # this still be there ???
   # ---------------------------
 
-
   # same -- validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
   def not_a_duplicate
     # if there is already a kombucha with that flavor && brand, throw an error
@@ -55,7 +56,6 @@ class Kombucha < ApplicationRecord
       errors.add(:flavor, "has already been added to that brand")
     end 
   end 
-
 
   # for collection_select display in /reviews/new
   def flavor_and_brand
@@ -70,4 +70,3 @@ class Kombucha < ApplicationRecord
   end 
 
 end
-

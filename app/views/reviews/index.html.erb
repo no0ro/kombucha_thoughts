@@ -14,8 +14,11 @@
 
 
 <div>
+ <%# <h1> Average Rating: <%= @avg_rating%> 
+
 <ul>
-<% @reviews.each do |review| %>
+
+<% @reviews.each do |review| %> 
     <li>
         
         <h2><%= link_to review.title, review_path(review) %> - Rating: <%= review.rating%></h2>

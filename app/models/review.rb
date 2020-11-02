@@ -19,5 +19,7 @@ class Review < ApplicationRecord
   # use on - a REVIEW instance - ie: review.date_formatted
   # found in -  Views: users/show, reviews/index, reviews/show
  end 
+ 
+
 
 end

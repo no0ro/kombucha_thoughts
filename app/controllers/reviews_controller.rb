@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
         if @kombucha = Kombucha.find_by_id(params[:kombucha_id]) 
                 # where - grab all reviews associated with this specific kombucha
             @reviews = @kombucha.reviews
+            # @avg_rating = Kombucha.average_rating
         else 
         # else unnested 
             @reviews = Review.all
