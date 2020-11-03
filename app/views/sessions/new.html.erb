@@ -1,71 +1,58 @@
-<h1 class="card-title">Choose a login method below:</h1>
-    <%# <p class="card-text">Great </p> %>
-
-<div class="row">
-  <div class="col text-center">
-<h3>Login with Kombucha Thoughts: </h3>
-
-<p> <%= flash[:error] %> </p>
-
-<%= form_for(:user) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-
-    <%= f.label :email  %>
-    <%= f.email_field :email %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
-    <%= f.submit "Log In"  %>
-<% end %>  
-</div>
-</div>
-     
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="p-2 bd-highlight">
-    <div class="card" style="width: 18rem;">
-    <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-        <%= image_tag("google_logo.png", size: "100x80" , alt: "Google Logo") %>
-    <div class="card-body">
-        <h5 class="card-title">Log In with Google</h5>
-    </div>
-    <div class="card-body">
-        <a href="/auth/google_oauth2" class="btn btn-primary">Here</a>
-    </div>
-    </div> 
+<div class='container'>
+    <%# <h2 class='text-center lead'> Choose a Login Method Below: </h2> %>
+    <br>
+    <br>
    
-</div>
-<br>
-     
-  <div class="p-2 bd-highlight">
-<div class="card" style="width: 18rem;">
-  <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-  
-    <%= image_tag("github_logo.png", size: "100x80" , alt: "Github Logo") %>
-  <div class="card-body">
-    <h5 class="card-title">Log In with Github</h5>
-  </div>
-  <div class="card-body">
-    <a href="/auth/github" class="btn btn-primary">Here</a>
-  </div>
-  </div>
-</div>
- </div> 
+    <div class="bg-light text-left rounded">
+        <h3 class="lead">Login Through Kombucha Thoughts: </h3>
+        <br>
+
+        <%= form_for(:user) do |f| %>
+        <%= flash[:error] %>
+
+        <%= f.label :username%>
+        <%= f.text_field :username, required: true %>
+
+        <%= f.label :email , class: 'tab'  %>
+        <%= f.email_field :email, required: true %>
+
+        <%= f.label :password , class: 'tab'  %>
+        <%= f.password_field :password, required: true %>
+
+        <%= f.submit "Log In" %><br><br>
+        <% end %>
+    </div>
+    <br><br>
+
+    <%# ----- %>
 
 
+    <h3 class="lead">Or Login Through: </h3>
+    <div class="themed-grid-col col-md-4">
+        <div class="card" style="width: 18rem;">
+            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
+            <%= image_tag("google_logo.png", size: "100x80" , alt: "Google Logo") %>
+            <div class="card-body">
+                <h5 class="card-title">Log In via Google</h5>
+            </div>
+            <div class="card-body">
+                <a href="/auth/google_oauth2" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </div>
 
-<div class="row">
-  <div class="col text-center">
-    <a href="/auth/google_oauth2" class="card-link">Login with Google</a><br>
+
+    <div class="themed-grid-col col-md-4">
+        <div class="card" style="width: 18rem;">
+            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
+            <%= image_tag("github_logo.png", size: "100x80" , alt: "Github Logo") %>
+            <div class="card-body">
+                <h5 class="card-title">Log In via Github</h5>
+            </div>
+            <div class="card-body">
+                <a href="/auth/github" class="btn btn-primary">Login</a>
+            </div>
+
+        </div>
     </div>
 </div>
-
-<div class="row">
-  <div class="col text-center"> 
-<a href="/auth/github" class="card-link">Login with Github</a><br>
-
-</div>
-</div>
-
-<br>

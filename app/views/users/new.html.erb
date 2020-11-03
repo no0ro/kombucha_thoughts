@@ -1,25 +1,56 @@
-<h1>Sign Up!</h1>
+<div class='container'>
+    <h2 class='text-center'> Choose a Sign Up Method Below: </h2>
 
-<div>
-<h1 class="card-title">Sign Up</h1>
-        <p class="card-text">Choose a signup method below:</p>
-        <a href="/auth/google_oauth2" class="card-link">Signup with Google</a><br>
-        <a href="/auth/github" class="card-link">Signup with Github</a> <br>
-        <a href="<%= signup_path %>" class="card-link">Signup with Kombucha Thoughts</a><br>
-        
+    <%= render partial: "layouts/errors", locals: {object: @user} %>
+
+    <div class="bg-light text-left rounded">
+        <h3> Sign Up Through Kombucha Thoughts: </h3>
+        <br>
+
+        <%= form_for @user do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username, required: true %>
+
+        <%= f.label :email  %>
+        <%= f.email_field :email, required: true %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true %>
+
+        <%= f.submit "Sign Up"  %>
+        <% end %>
+    </div>
+    <br><br>
+
+
+    <h3>Or Sign Up Through: </h3>
+    <div class="themed-grid-col col-md-4">
+        <div class="card" style="width: 18rem;">
+            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
+            <%= image_tag("google_logo.png", size: "100x80" , alt: "Google Logo") %>
+            <div class="card-body">
+                <h5 class="card-title">Sign Up via Google</h5>
+            </div>
+            <div class="card-body">
+                <a href="/auth/google_oauth2" class="btn btn-primary">Signup</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="themed-grid-col col-md-4">
+        <div class="card" style="width: 18rem;">
+            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
+            <%= image_tag("github_logo.png", size: "100x80" , alt: "Github Logo") %>
+            <div class="card-body">
+                <h5 class="card-title">Sign Up via Github</h5>
+            </div>
+            <div class="card-body">
+                <a href="/auth/github" class="btn btn-primary">Signup</a>
+            </div>
+
+        </div>
+    </div>
 </div>
 
-<%= render partial: "layouts/errors", locals: {object: @user} %>
 
-<%= form_for @user do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-
-    <%= f.label :email  %>
-    <%= f.email_field :email %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
-    <%= f.submit "Sign Up"  %>
-<% end %>
