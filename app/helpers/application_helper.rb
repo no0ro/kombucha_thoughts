@@ -2,9 +2,9 @@ module ApplicationHelper
 # specifically for views, doenst touch db, just for display
     def render_nav_bar
         if logged_in?
-            render partial: 'layouts/loggedin_links'
+            render partial: 'partials/navbar'
         else
-            render partial: 'layouts/loggedout_links'
+            render partial: 'partials/loggedout_nav'
         end
     end
 end

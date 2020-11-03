@@ -29,6 +29,22 @@
     display: table;
     font-family: 'Courier New', Courier, monospace
   }
+
+footer {
+  padding: 30px 10px 30px 2px; 
+  font-family: 'Tahoma', Geneva, sans-serif
+}
+
+.tab {
+  margin-left: 2.5em
+  }
+
+.jumbotron{
+  background-color: red;
+}
+
+
+
   
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
