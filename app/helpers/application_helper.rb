@@ -7,4 +7,14 @@ module ApplicationHelper
             render partial: 'partials/loggedout_nav'
         end
     end
+
+
+    def render_footer
+        if logged_in?
+            render partial: 'partials/footer'
+        # else
+        #     render partial: 'partials/loggedout_nav'
+        end
+    end
+
 end
