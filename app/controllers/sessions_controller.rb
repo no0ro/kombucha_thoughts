@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController 
-    skip_before_action :require_login, only: [:new, :create, :omniauth]
+    skip_before_action :require_login, only: [:welcome, :new, :create, :omniauth]
         # ^ necessary bc, in App Controller we `before_action :require_login`
 
     # / (views/welcome.html.erb)

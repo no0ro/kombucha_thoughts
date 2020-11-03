@@ -1,5 +1,14 @@
 <h1>Sign Up!</h1>
 
+<div>
+<h1 class="card-title">Sign Up</h1>
+        <p class="card-text">Choose a signup method below:</p>
+        <a href="/auth/google_oauth2" class="card-link">Signup with Google</a><br>
+        <a href="/auth/github" class="card-link">Signup with Github</a> <br>
+        <a href="<%= signup_path %>" class="card-link">Signup with Kombucha Thoughts</a><br>
+        
+</div>
+
 <%= render partial: "layouts/errors", locals: {object: @user} %>
 
 <%= form_for @user do |f| %>
