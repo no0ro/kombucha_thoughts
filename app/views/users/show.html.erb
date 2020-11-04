@@ -1,18 +1,35 @@
-<h1> Welcome <%= @user.username %>!</h1>
+<div class="container-fluid  ">
+    <div class="shiftH1 text-center">  Welcome <%= @user.username %>! </div>
 
-<h3>My Reviews:</h3>
-<ul>
-  <% @user.reviews.each do |review|%>
-    <li> 
-      <%= link_to review.kombucha.brand_and_flavor, kombucha_path(review.kombucha)%> <br>
-      Title: <%=  review.title %> <br>
-      Content: <%=  review.content  %> <br>
-      Rating: <%=  review.rating %><br>
-      Reviewed on: <%=  review.date_formatted%> <br>
-      <%=link_to "Edit", edit_review_path(review) %> | 
-      <%=link_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %> 
-    </li>
+    <div class="shiftp text-center">Keep track of all your Kombucha Thoughts</div>
+
     <br>
-  <% end %>
-</ul>
+    <br>
 
+
+
+
+  <div class="shiftH1">My Reviews:</div>
+    <div>
+      <% @user.reviews.each do |review|%>
+        <div class="card" style="width: 65rem;" > 
+          <div class="card-body">
+            <h4 class="card-title shiftH3 mb-2"><%= link_to  review.kombucha.flavor_and_brand, kombucha_path(review.kombucha)%></h4> 
+            <p class="small card-subtitle mb-2 shiftp text-muted"> Reviewed on: <%=  review.date_formatted%></p>
+          
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">Title: <%=  review.title %></li> 
+            <li class="list-group-item">Content: <%=  review.content  %></li>
+            <li class="list-group-item">Rating: <%=  review.rating %></li>
+            </ul>
+            
+            <a><%=link_to "Edit", edit_review_path(review) %></a> | 
+            <a><%=link_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %></a>  <br>
+
+          </div>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,24 @@
-<h1>All Brands</h1>
+<div class="container-fluid text-center ">
+    <div class="shiftH1"> All Brands </div>
+    <div class="shiftp">Displayed By </div>
+<br>
+<br>
 
-<ol>
-<% @brands.each do |brand| %>
-    <li> <%= brand.name%>  </li>
-    <%# <%=link_to "Delete This Brand", brand_path(brand), method: :delete, data: {confirm: "Are you sure?"} %>  
 
-<% end %>
-</ol>
+    <div>
+    <% @brands.each do |brand| %>
+         <div class="card mx-auto" style="width: 45rem;"> 
+            <div class="card-body">
+            <h4 class="card-title shiftH3 mb-2"> <%= brand.name %>  </h4>
+            <%# returns komb object, so need to interate throiugh<%= brand.kombuchas %>
+
+        <%# <%=link_to "Delete This Brand", brand_path(brand), method: :delete, data: {confirm: "Are you sure?"}%>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+
+
+<%# [] Each brands top 3 rated kombucha flavor - w/ link to that kombucha show page 
+[] Brands with highest average review rating %>
