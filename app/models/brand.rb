@@ -4,9 +4,7 @@ class Brand < ApplicationRecord
     # --------------------------
     # validations 
     validates :name, presence: true, uniqueness: true 
-        #    ^ delete test items w/o brands first! or will break 
-        # uniqueness??
-    
+
     # scope -- uses abc from kombucha model?
     scope :abc_name, -> { order(:name) }
 end

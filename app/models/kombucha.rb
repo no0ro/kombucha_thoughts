@@ -63,7 +63,6 @@ class Kombucha < ApplicationRecord
      # "#{flavor} - #{brand.try(:name)}"
   end 
  
-  # havent used yet
   def brand_and_flavor 
     "#{brand.name} -  #{flavor}"  
      # "#{flavor} - #{brand.try(:name)}"
