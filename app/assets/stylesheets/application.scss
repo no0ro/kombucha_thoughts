@@ -24,11 +24,16 @@
   }
 
  .field_with_errors {
-    padding: 2px;
-    background-color: red;
+    padding: .2px;
+    border-style: solid;
+    border-color: rgb(230, 119, 174);
     display: table;
-    font-family: 'Courier New', Courier, monospace
+    font-family: ‘Shift’, sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
   }
+
+a:hover
 
 footer {
   padding: 30px 10px 30px 2px; 

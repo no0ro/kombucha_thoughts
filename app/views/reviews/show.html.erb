@@ -1,33 +1,42 @@
 <%# <--! /reviews/3--> %>
-<h1> Review for: <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h1>
-<br><br>
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<div class="container-fluid  ">
+    <div class="shiftH1"> Review for: </div>
 
-<div>
-    <p> Title: <%= @review.title%></p>
+        
+        <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+
+    <div class="card " style="width: 55rem;" > 
+        <div class="card-body">
+        <h4 class="card-title shiftH3 mb-2">  <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h4><br>
+
+            <div class="shiftp"> Rating: <%= @review.rating%></div>
+            <div class="shiftp">Title: <%= @review.title%></div>
+            <div class="shiftp" > Content: <%= @review.content %></div>
+           
+            <br>
+            <br>
+
+            
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"> Reviewed by: <%= @review.user.username%> on <%=@review.date_formatted %> </h6> 
+
+            <% if logged_in? && @review.user_id == current_user.id %>
+                <h6 class="card-subtitle mb-2 shiftp text-muted small">
+                    <%=link_to "Edit Review", edit_review_path(@review) %> | 
+                    <%=link_to "Delete This Review", review_path(@review), method: :delete, data: {confirm: "Are you sure?"} %></h6>
+            <% end %>
+              
+            
+            
+      
+
+        </div>
+        <div class="card-footer">
+            <div class="shiftp"><strong>View All Reviews for: <%= link_to @kombucha.flavor, kombucha_reviews_path(@kombucha) %> </strong></div>
+           </div>
+    </div>
+
 </div>
 
-<div>
-    <p> Rating: <%= @review.rating%></p>
-</div>
-
-<div>
-    <p> Content: <%= @review.content %></p>
-</div>
-<br>
-
-<div>
-<% if logged_in? && @review.user_id == current_user.id %>
-    <%=link_to "Edit Review", edit_review_path(@review) %> |
-    <%=link_to "Delete This Review", review_path(@review), method: :delete, data: {confirm: "Are you sure?"} %> 
-<% end %>
-</div>
-
-<p> Reviewed by: <%= @review.user.username%> on <%=@review.date_formatted %> </p>
-<br><br>
-
-<h3>View All Reviews for: <%= link_to @kombucha.flavor, kombucha_reviews_path(@kombucha) %></h3>
-
-
+[] Why flash notice here?

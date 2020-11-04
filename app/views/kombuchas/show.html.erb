@@ -1,30 +1,33 @@
-<h1><%= @kombucha.flavor%></h1>
-<%= flash[:notice] %>
-[] TO DO: add flash notice confirmation styling here
-<div>
-    <p> Brand: <%= @kombucha.brand.name%></p>
-</div>
+<%# <--! /kombuchas/3--> %>
+<div class="container-fluid">
+        <br>
+        <br>
+    <%= flash[:notice] %>
 
-<div>
-    <p> Flavor: <%= @kombucha.flavor%></p>
-</div>
- 
-<div>
-    <p> Description: <%= @kombucha.description %></p>
-</div>
+    <div class="card " style="width: 45rem;" > 
+        <div class="card-body mx-auto">
+            <h4 class="card-title shiftH1 mb-2"> <%= @kombucha.flavor %> </h4><br>
 
-<div>
-     <p> Created By:  <%= @kombucha.user.username %> </p> 
+            <div class="shifth3"> Brand: <%= @kombucha.brand.name%></div>
+            <div class="shifth3"> Description: <%= @kombucha.description %></div>
+             
+            <br>
+
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"> Added By:  <%= @kombucha.user.username %> </h6>
+            <% if logged_in? && @kombucha.user_id == current_user.id %>
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"><%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> </h6>
+            <% end %>
+          
+            <br>
+            <a class="btn btn-primary" <%= link_to "Write A Review", new_kombucha_review_path(@kombucha)%> </a> 
+            <a class="btn btn-primary tab" <%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %></a> 
+        </div>
+    </div>
     <br>
-</div>
+    <br>
+</div> 
 
-<% if logged_in? && @kombucha.user_id == current_user.id %>
-<%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> 
-<% end %>
+ <br>
+  <br>
 
-<%= link_to "Write A Review", new_kombucha_review_path(@kombucha) %> |
-<%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %> 
-
-<br>
-<br>
-   
+   [] TO DO: add flash notice confirmation styling here
