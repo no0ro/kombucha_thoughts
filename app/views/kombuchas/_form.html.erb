@@ -1,38 +1,63 @@
 <%= render partial: 'layouts/errors', locals: {object: @kombucha} %>
 
-<%= form_for(@kombucha) do |f| %>
-    <div>
-        <%= f.label :flavor %>
-        <%= f.text_field :flavor %>
-    </div>
+<div class="container">
+    <%= form_for(@kombucha) do |f| %>
+    <div class="form-section">
 
-    <div>
-        <%= f.label :description  %>
-        <%= f.text_field :description %>
-    </div>
+        <div class="form-group row">
+            <%= f.label :flavor, {class: "col-2 col-form-label"}%>
+            <div class="col">
+                <%= f.text_field :flavor, {class: "form-control"}%>
+            </div>
+        </div>
 
-    <p> Select an Existing Brand: </p>
+        <div class="form-group row">
+            <%= f.label :description, {class: "col-2 col-form-label"} %>
+            <div class="col">
+                <%= f.text_field :description, {class: "form-control"} %>
+            </div>
+        </div>
+        <br>
+
+
+
+        <div class="form-group row">
+            <p class="col-12 "><strong> Select an Existing Brand: </strong></p> <br>
+            <div class="col-2">
+                <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select One' %>
+                <%# Display all existing brands, for user to associate kombucha with  %>
+            </div>
+        </div>
+
+        
+        <h5 class="tab"> -OR- </h5><br>
+
+        <div class="form-group row">
+            <p class="col-12 "><strong> Add a New Brand: </strong></p> <br>
+            <div class="col">
+                <%= f.fields_for :brand do |b| %>
+                <%# :brand - associated model that we're creating  %>
+                <div class="form-group row">
+                    <%= b.label :name, {class: "col-2 col-form-label"} %>
+                    <div class="col">
+                        <%= b.text_field :name, {class: "form-control"} %>
+                        <%# :name - will be nested under our post_params %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+
+    
     <div>
-        <%= f.collection_select :brand_id, Brand.all, :id, :name, include_blank: 'Select One' %>
-        <%# Display all existing brands, for user to associate kombucha with  %>
+        <%= f.submit %>
+    </div>
     </div>
     
-    <p> Create a New Brand :</p>
-    <div>
-        <%= f.fields_for :brand do |b| %>
-                <%# :brand - associated model that we're creating  %>
-            <%= b.label :name %>
-            <%= b.text_field :name %>    
-                <%# :name - will be nested under our post_params %>
-        <% end %>
-    </div>
+    <% end %>
+</div>
 
-    <div>
-    <%= f.submit %>
-    </div>
-<% end %>  
-
-
+    
 
 <%# t.integer "brand_id"   belongs_to :brand %>
 <%# t.integer "user_id" %>
