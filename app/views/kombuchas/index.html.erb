@@ -1,24 +1,29 @@
 
+<div class="container-fluid text-center ">
+    <div class="shiftH1"> All Kombuchas </div>
 
-<div class="shiftH1 text-center">All Kombuchas</div>
+    <div class="shiftp">Displayed By Highest Average Review Rating</div>
 
+    <br>
+    <br>
 
-
-
-<h3>Displayed By Highest Average Review Rating</h3>
-
-
-<div>
-<ul>
-    <% @kombuchas.each do |kombucha| %>
-        <li> 
-        <h2> <%= link_to kombucha.flavor, kombucha_path(kombucha) %> - <%=kombucha.brand.name%> </h2>
-        <p><%= kombucha.description %></p>
-        <%= link_to "Add a Review", new_kombucha_review_path(kombucha) %> | <%= link_to "All Reviews", kombucha_reviews_path(kombucha) %>
-        <%# <%= button_to "delete", kombucha, :method => :delete %> 
-        </li><br>
-    <% end %>
- </ul>
+    <div> 
+        <ul>
+            <% @kombuchas.each do |kombucha| %>
+                <div class="card mx-auto" style="width: 45rem;"> 
+                      <div class="card-body">
+                        <h4 class="card-title shiftH3 mb-2"> <%= link_to kombucha.flavor, kombucha_path(kombucha) %> </h4>
+                        <h6 class="card-subtitle mb-2 shiftp text-muted"> <%=kombucha.brand.name%> </h6>
+                        <%# AVG RATING <p class="card-text"><%= kombucha.description %> <br>
+                        <a><%= link_to "Add a Review", new_kombucha_review_path(kombucha) %></a> | 
+                        <a> <%= link_to "All Reviews", kombucha_reviews_path(kombucha) %></a>
+                <%# <%= button_to "delete", kombucha, :method => :delete %> 
+                      </div>
+                </div>
+                <br>
+            <% end %>
+        </ul>
+    </div>
 </div>
 
 
