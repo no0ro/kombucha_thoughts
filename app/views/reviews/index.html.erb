@@ -1,41 +1,41 @@
-<!--Form Shared by `/reviews` AND `/kombucha/:id/reviews`-->
+<!--`/reviews`-->
+<!-- /kombucha/:id/reviews`-->
 
 <%# <h5> SAME PATH: views/reviews/index.html.erb </h5>
 <h5> UN-NESTED: click "All Reviews"  || /reviews || </h5>
 <h5> NESTED: click "View All Reviews for:__" || /kombuchas/:id/reviews || </h5> %>
 
+!!
 
 <div class="container-fluid ">
+    <% if @kombucha %>
+        <div class="shiftH3"> Reviews for: </div> 
+        <div class="shiftH1"><%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </div><br>
+
+        <a class="btn btn-primary" <%= link_to "Write A Review", new_kombucha_review_path(@kombucha)%> </a> 
+        <hr>
+    <% else %>
+        <div class="shiftH1">All Reviews</div>
+        <p class="shiftp">Displayed By Most Recent</p>
+    <% end %>
+
+    <br>
         <% if @kombucha %>
-            <div class="shiftH3"> Reviews for:  <%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </div>
-        <% else %>
-            <div class="shiftH1">All Reviews</div>
-            <p class="shiftp">Displayed By Most Recent</p>
-        <% end %>
+    <% end %>
 
-        <br>
-      
-        <%# <h1> Average Rating: <%= @avg_rating%> 
-        
-            <div>
-                <% @reviews.each do |review| %> 
-                    <div class="card" style="width: 45rem;" > 
-                        <div class="card-body">
-                            <h4 class="card-title shiftH3 mb-2"><%= link_to review.title, review_path(review) %> </h4>
-                            <h6 class="card-subtitle mb-2 shiftp text-muted"> <%= review.kombucha.flavor%> by <%= review.kombucha.brand.name%></h6>
-                            <p>Rating: <%= review.rating%></p><br>
+    <%# <h1> Average Rating: <%= @avg_rating%> 
 
-                            <p class="small"> Reviewed By: <%= review.user.username%> on <%= review.date_formatted%></p>
-                        </div>
-                    </div><br>
-                <% end %>
-            </div>
-        
-   
+        <div>
+            <% @reviews.each do |review| %> 
+                <div class="card" style="width: 45rem;" > 
+                    <div class="card-body">
+                        <h4 class="card-title shiftH3 mb-2"><%= link_to review.title, review_path(review) %> </h4>
+                        <h6 class="card-subtitle mb-2 shiftp text-muted"> <%= review.kombucha.flavor%> by <%= review.kombucha.brand.name%></h6>
+                        <p>Rating: <%= review.rating%></p><br>
 
-
-        <% if @kombucha %>
-            <h4>Add a Review for: <%= link_to @kombucha.flavor, new_kombucha_review_path(@kombucha) %></h4>
-        <% end %>
-
+                        <p class="small"> Reviewed By: <%= review.user.username%> on <%= review.date_formatted%></p>
+                    </div>
+                </div><br>
+            <% end %>
+        </div>
 </div>
