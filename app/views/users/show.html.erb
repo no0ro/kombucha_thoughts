@@ -17,7 +17,7 @@
               <p class="shiftp">Rating: <%=  review.rating %></p>
    
             <h6 class="card-subtitle mb-2 shiftp text-muted small halftab"><%=link_to "Edit", edit_review_path(review) %></h6> <br>
-            <h6 class="card-subtitle mb-2 shiftp text-muted small"><%=button_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %></h6>  
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"><%=button_to "Delete", review_path(review), method: :delete%></h6>  
           
 
           </div>
