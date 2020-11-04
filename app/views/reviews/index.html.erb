@@ -1,36 +1,41 @@
 <!--Form Shared by `/reviews` AND `/kombucha/:id/reviews`-->
 
-<h5> SAME PATH: views/reviews/index.html.erb </h5>
+<%# <h5> SAME PATH: views/reviews/index.html.erb </h5>
 <h5> UN-NESTED: click "All Reviews"  || /reviews || </h5>
-<h5> NESTED: click "View All Reviews for:__" || /kombuchas/:id/reviews || </h5>
+<h5> NESTED: click "View All Reviews for:__" || /kombuchas/:id/reviews || </h5> %>
 
 
+<div class="container-fluid ">
+        <% if @kombucha %>
+            <div class="shiftH3"> Reviews for:  <%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </div>
+        <% else %>
+            <div class="shiftH1">All Reviews</div>
+            <p class="shiftp">Displayed By Most Recent</p>
+        <% end %>
 
-<% if @kombucha %>
-    <h1> Reviews for <%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </h1>
-<% else %>
-    <h1>All Kombucha Reviews</h1>
-<% end %>
-
-
-<div>
- <%# <h1> Average Rating: <%= @avg_rating%> 
-
-<ul>
-
-<% @reviews.each do |review| %> 
-    <li>
+        <br>
+      
+        <%# <h1> Average Rating: <%= @avg_rating%> 
         
-        <h2><%= link_to review.title, review_path(review) %> - Rating: <%= review.rating%></h2>
-        <p> <%= review.kombucha.flavor%> by <%= review.kombucha.brand.name%></p>
+            <div>
+                <% @reviews.each do |review| %> 
+                    <div class="card" style="width: 45rem;" > 
+                        <div class="card-body">
+                            <h4 class="card-title shiftH3 mb-2"><%= link_to review.title, review_path(review) %> </h4>
+                            <h6 class="card-subtitle mb-2 shiftp text-muted"> <%= review.kombucha.flavor%> by <%= review.kombucha.brand.name%></h6>
+                            <p>Rating: <%= review.rating%></p><br>
 
-        <p>  Reviewed By: <%= review.user.username%> on <%= review.date_formatted%></p>
-    </li><br>
-<% end %>
- </ul>
+                            <p class="small"> Reviewed By: <%= review.user.username%> on <%= review.date_formatted%></p>
+                        </div>
+                    </div><br>
+                <% end %>
+            </div>
+        
+   
+
+
+        <% if @kombucha %>
+            <h4>Add a Review for: <%= link_to @kombucha.flavor, new_kombucha_review_path(@kombucha) %></h4>
+        <% end %>
+
 </div>
-
-
-<% if @kombucha %>
-    <h4>Add a Review for: <%= link_to @kombucha.flavor, new_kombucha_review_path(@kombucha) %></h4>
-<% end %>
