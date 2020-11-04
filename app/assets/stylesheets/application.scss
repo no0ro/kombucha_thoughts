@@ -23,7 +23,7 @@
  $apple-system: -apple-system;
  //  $heading-font:
 
- 
+
  // Font Related //
 .shiftH1{
   font-family: ‘Shift’, sans-serif;
@@ -177,8 +177,10 @@ div#error_explanation > ul > li {
 
 // Alerts //
 
-.alert {
+// flash[:notice]
+.alert-success{
   font-family: $shift;
+  font-weight: lighter;
   font-size: 2rem;
   text-align: center;
 }
@@ -188,6 +190,21 @@ div#error_explanation > ul > li {
   background-color: $dark-teal;
   border-color: $dark-teal;
 }
+
+// Notice //
+
+.notice {
+  font-family: $shift;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.alert-dark {
+  color: $light-teal;
+  background-color: $dark-teal;
+  border-color: $dark-teal;
+}
+
 
 // Footer //
 

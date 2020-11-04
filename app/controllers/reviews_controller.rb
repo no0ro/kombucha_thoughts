@@ -50,7 +50,8 @@ class ReviewsController < ApplicationController
         @review.user_id = session[:user_id] # assign user to this review
 
         if @review.save
-            redirect_to review_path(@review) #, notice: 'Review was successfully created.' 
+            flash[:notice] = "Review Successfully Created"
+            redirect_to review_path(@review)  
              # review show page
         else 
             render :new
@@ -88,8 +89,8 @@ class ReviewsController < ApplicationController
     # PATCH/PUT /reviews/:id
     def update 
         if @review.update(review_params) 
-            flash[:notice] = "Review successfully updated"
-            redirect_to review_path(@review) #, notice: "Review was successfully updated." 
+            flash[:notice] = "Review Successfully Updated"
+            redirect_to review_path(@review)  
         else 
             render :edit
         end 

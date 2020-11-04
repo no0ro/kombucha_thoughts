@@ -4,6 +4,7 @@ class KombuchasController < ApplicationController
     
 
     # GET /kombuchas
+    # `/reviews`  ||  /kombucha/:id/reviews`
     def index
         # @kombuchas = Kombucha.all
         @kombuchas = Kombucha.order_by_rating.includes(:brand)
@@ -32,7 +33,8 @@ class KombuchasController < ApplicationController
             # assign a user to the params of this newly created kombucha, must do this before we can save the kombucha
         
         if @kombucha.save # where kombucha validations happen
-            redirect_to kombucha_path(@kombucha) #showxs
+            flash[:notice] =  "Kombucha Successfully Created"
+            redirect_to kombucha_path(@kombucha) #show
         else 
             # build -- @kombucha.build_brand
             # re-render the :new template WITHOUT throwing away the invalid @kombucha
@@ -49,8 +51,8 @@ class KombuchasController < ApplicationController
     def update 
         # [] TO DO: if set_kombucha -- use helper
         if @kombucha.update(kombucha_params)
+            flash[:notice] =  "Kombucha Successfully Updated"
             redirect_to kombucha_path(@kombucha)
-            flash[:notice] =  "Kombucha successfully updated"
         else 
             # re-render the :edit template WITHOUT throwing away the invalid @kombucha
             render :edit

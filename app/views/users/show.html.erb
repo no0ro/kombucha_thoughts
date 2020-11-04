@@ -1,13 +1,9 @@
 <div class="container-fluid  ">
     <div class="shiftH1 text-center">  Welcome <%= @user.username %>! </div>
-
     <div class="shiftp text-center">Keep track of all your Kombucha Thoughts</div>
 
     <br>
     <br>
-
-
-
 
   <div class="shiftH1">My Reviews:</div>
     <div>
@@ -15,16 +11,14 @@
         <div class="card" style="width: 65rem;" > 
           <div class="card-body">
             <h4 class="card-title shiftH3 mb-2"><%= link_to  review.kombucha.flavor_and_brand, kombucha_path(review.kombucha)%></h4> 
-            <p class="small card-subtitle mb-2 shiftp text-muted"> Reviewed on: <%=  review.date_formatted%></p>
+            <p class="small card-subtitle mb-2 shiftp text-muted"> Reviewed on: <%=  review.date_formatted%></p><br>
+              <p class="shiftp">Title: <%=  review.title %></p> 
+              <p class="shiftp">Description: <%=  review.content  %></p>
+              <p class="shiftp">Rating: <%=  review.rating %></p>
+   
+            <h6 class="card-subtitle mb-2 shiftp text-muted small halftab"><%=link_to "Edit", edit_review_path(review) %></h6> <br>
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"><%=button_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %></h6>  
           
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">Title: <%=  review.title %></li> 
-            <li class="list-group-item">Description: <%=  review.content  %></li>
-            <li class="list-group-item">Rating: <%=  review.rating %></li>
-            </ul>
-            
-            <a><%=link_to "Edit", edit_review_path(review) %></a> | 
-            <a><%=link_to "Delete", review_path(review), method: :delete, data: {confirm: "Are you sure?"} %></a>  <br>
 
           </div>
         </div>

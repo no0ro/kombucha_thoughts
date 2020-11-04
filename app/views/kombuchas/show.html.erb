@@ -2,9 +2,11 @@
 <div class="container-fluid">
         <br>
         <br>
-    <%= flash[:notice] %>
-
     <div class="card " style="width: 45rem;" > 
+        <% if flash[:notice] %>
+            <div class="alert-success"><%= flash[:notice] %></div>
+        <% end %>
+        
         <div class="card-body mx-auto">
             <h4 class="card-title shiftH1 mb-2"> <%= @kombucha.flavor %> </h4><br>
 
