@@ -2,9 +2,9 @@ module ReviewsHelper
     def display_header(review)
         # in views/reviews/edit.html.erb
         if params[:kombucha_id] 
-            content_tag(:h1, "Add a Review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}") 
+            content_tag(:h1, "Write a Review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}", {class: "lead text-center"}) 
         else 
-            content_tag(:h1, "Create a review")
+            content_tag(:h1, "Write a Review", {class: "lead text-center"})
         end 
     end 
 end

@@ -2,34 +2,51 @@
 
 
 <!-- ? action='/reviews', method='post'-->
+<div class="container">
 <%= form_for([@user, @review]) do |f| %>
     <%= render partial: 'layouts/errors', locals: {object: @review} %>
+    
+    <div class="form-section">
+        <div class="form-group row">
+            <% if params[:kombucha_id] %>
+                <%= f.hidden_field :kombucha_id %>
+            <% else %>
+            <div class="col">
+                <%= f.label :kombucha_id, "Select a Kombucha "%>
+                <%= f.collection_select :kombucha_id, Kombucha.abc_name, :id, :flavor_and_brand, include_blank: true %>
+            </div>
+            <% end %>
+        </div>
 
-    <% if params[:kombucha_id] %>
-        <%= f.hidden_field :kombucha_id %>
-    <% else %>
-       <div>
-        <%= f.label :kombucha_id, "Select a Kombucha" %>
-        <%= f.collection_select :kombucha_id, Kombucha.abc_name, :id, :flavor_and_brand, include_blank: true %>
-       </div>
-     <% end %>
+         <div class="form-group row">
+            <%= f.label :title, {class: "col-1 col-form-label"}%>
+            <div class="col">
+                <%= f.text_field :title , {class: "form-control"}%>
+            </div>
+        </div>
+        <br>
 
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+        <div class="form-group row">
+            <%= f.label :content, {class: "col-1 col-form-label"}  %>
+            <div class="col">
+            <%= f.text_area :content, {class: "form-control"}%>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :rating, {class: "col-1 col-form-label"}%>
+            <div class="col">
+                <%= f.number_field :rating, min:0, max:5 %>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+            <%= f.submit %>
+        </div>
+
     </div>
-    <br>
-    <div> 
-        <%= f.label :rating %>
-        <%= f.number_field :rating, min:0, max:5 %>
-    </div>
-    <br>
-    <div>
-        <%= f.label :content  %>
-        <%= f.text_area :content, size:"30x10"%>
-    </div>
-    <br>
-    <div>
-    <%= f.submit %>
-    </div>
-<% end %>  
+    <% end %>  
+</div>
