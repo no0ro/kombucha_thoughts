@@ -35,6 +35,7 @@ class KombuchasController < ApplicationController
             redirect_to kombucha_path(@kombucha) #showxs
         else 
             # build -- @kombucha.build_brand
+            # re-render the :new template WITHOUT throwing away the invalid @kombucha
             render :new
         end 
     end 
@@ -51,6 +52,7 @@ class KombuchasController < ApplicationController
             redirect_to kombucha_path(@kombucha)
             flash[:notice] =  "Kombucha successfully updated"
         else 
+            # re-render the :edit template WITHOUT throwing away the invalid @kombucha
             render :edit
         end 
     end 

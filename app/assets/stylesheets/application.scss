@@ -17,59 +17,25 @@
  
  @import "bootstrap-sprockets";
 
- .field{
-    /* padding: 2px; */
-    background-color: rgb(0, 162, 255);
-    /* display: table; */
-  }
+ // Fonts //
+ $shift: ‘Shift’, sans-serif;
+ $helv-neue-arial: "Helvetica Neue", Arial;
+ $apple-system: -apple-system;
+ //  $heading-font:
 
- .field_with_errors {
-    padding: .2px;
-    border-style: solid;
-    border-color: rgb(230, 119, 174);
-    display: table;
-    font-family: ‘Shift’, sans-serif;
-    font-size: 15px;
-    font-weight: lighter;
-  }
-
-a:hover
-
-footer {
-  padding: 30px 10px 30px 2px; 
-  font-family: 'Tahoma', Geneva, sans-serif
-}
-
-.tab {
-  margin-left: 2.5em
-  }
-
-.halfTab{
-  margin-left: 1.5em
-}
-
-.jumbotron{
-  background-color: red;
-}
-
-.largefont{
-  font-size: 30px;
-}
-
-// Font Related
+ 
+ // Font Related //
 .shiftH1{
   font-family: ‘Shift’, sans-serif;
   font-size: 40px;
   font-weight: lighter;
 }
 
-
 .shiftH3{
   font-family: ‘Shift’, sans-serif;
   font-size: 25px;
   font-weight: lighter;
 }
-
 
 .shiftp{
   font-family: ‘Shift’, sans-serif;
@@ -78,23 +44,158 @@ footer {
 }
 
 
+// Colors //
+$dark-teal: #368869;
+$teal: #50b48e;
+$light-teal: #92dbbf; 
+$orange-red: #cf4d16;
+$salmon: #d65539;
 
 
-.fontHelvNeueArial{
-  font-family:  "Helvetica Neue", Arial,;
+$white: #ffffff;
+$black: #000000;
+$light-accent: #ddf89a;
+$light-shade: #e7f8fb;
+$main-color: #85c7d3;
+$dark-shade: #378593;
+$darker-shade: #105d6b;
+$dark-accent: #ad8fda;
+$main-text: #01333c;
+$accent-text: #3f1875;
+$highlight-text: #78a014;
+
+
+
+
+// Extras //
+.tab {
+  margin-left: 2.5em
+  }
+
+.halfTab{
+  margin-left: 1.5em
+}
+
+.largefont{
   font-size: 30px;
 }
 
-.fontAppleSystem{
-  font-family: -apple-system;
-  font-size: 30px;
-}
 
 
-
-
-
-
-  
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
+
+@media screen { 
+
+
+// Foundation //
+html {
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  background-color: $white;
+}
+
+
+a {
+  color: $dark-teal;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $light-teal;
+  text-decoration: none;
+}
+
+
+// Buttons //
+.btn{
+  background-color: $teal;
+  border-color: $teal;
+}
+
+.btn:hover{
+  background-color: $light-teal;
+  border-color: $light-teal;
+}
+
+
+
+// Forms //
+// Form Errors //
+
+
+.field{
+padding: 20px, 20px; 
+  
+  /* display: table; */
+}
+
+div#error_explanation {
+  margin: 1rem 2.5rem 0 2.5rem;
+}
+
+div#error_explanation > h2 {
+  font-size: 2.2rem;
+  font-family: $shift;
+  color: $orange-red;
+  font-weight: bolder;
+}
+
+div#error_explanation > ul > li {
+  margin-left: 1rem;
+  color: $salmon;
+  font-family: $shift;
+  font-weight: lighter;
+  
+}
+
+
+// Errors //
+// .field{
+//   /* padding: 2px; */
+//   background-color: rgb(0, 162, 255);
+//   /* display: table; */
+// }
+
+// .field_with_errors {
+//   padding: .2px;
+//   border-style: solid;
+//   border-color: rgb(230, 119, 174);
+//   display: table;
+//   font-family: ‘Shift’, sans-serif;
+//   font-size: 15px;
+//   font-weight: lighter;
+// }
+
+
+
+
+// Alerts //
+
+.alert {
+  font-family: $shift;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.alert-dark {
+  color: $light-teal;
+  background-color: $dark-teal;
+  border-color: $dark-teal;
+}
+
+// Footer //
+
+footer {
+  padding: 30px 10px 30px 2px; 
+  font-family: 'Tahoma', Geneva, sans-serif
+}
+
+
+
+}
