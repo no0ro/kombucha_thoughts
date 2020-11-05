@@ -9,14 +9,15 @@
 
 <div class="container-fluid ">
     <% if @kombucha %>
-        <div class="shiftH3"> Reviews for: </div> 
+        <div class="shiftH3"> Community reviews for: </div> 
         <div class="shiftH1"><%= @kombucha.flavor %> - <%= @kombucha.brand.name %> </div><br>
 
         <a class="btn btn-primary" <%= link_to "Write A Review", new_kombucha_review_path(@kombucha)%> </a> 
         <hr>
     <% else %>
         <div class="shiftH1">All Reviews</div>
-        <p class="shiftp">Displayed By Most Recent</p>
+        <p class="shiftp">Explore the Communities Kombucha Thoughts</p>
+        <hr>
     <% end %>
 
     <br>
