@@ -52,21 +52,6 @@ $orange-red: #cf4d16;
 $salmon: #d65539;
 
 
-$white: #ffffff;
-$black: #000000;
-$light-accent: #ddf89a;
-$light-shade: #e7f8fb;
-$main-color: #85c7d3;
-$dark-shade: #378593;
-$darker-shade: #105d6b;
-$dark-accent: #ad8fda;
-$main-text: #01333c;
-$accent-text: #3f1875;
-$highlight-text: #78a014;
-
-
-
-
 // Extras //
 .tab {
   margin-left: 2.5em
@@ -100,7 +85,6 @@ body {
   background-color: $white;
 }
 
-
 a {
   color: $dark-teal;
   text-decoration: none;
@@ -128,7 +112,6 @@ a:hover {
 // Forms //
 // Form Errors //
 
-
 .field{
 padding: 20px, 20px; 
   
@@ -155,7 +138,7 @@ div#error_explanation > ul > li {
 }
 
 
-// Errors //
+// Test Errors //
 // .field{
 //   /* padding: 2px; */
 //   background-color: rgb(0, 162, 255);
@@ -191,6 +174,7 @@ div#error_explanation > ul > li {
   border-color: $dark-teal;
 }
 
+
 // Notice //
 
 .notice {
@@ -213,10 +197,12 @@ footer {
   font-family: 'Tahoma', Geneva, sans-serif
 }
 
-// Jumbotron //
+// Jumbotron - TEST //
+
 // .jumbotron {
 //   height: 300px;
 //   border-color: #0048CD;
+//   min-height: 200px;
 // }
 
 
