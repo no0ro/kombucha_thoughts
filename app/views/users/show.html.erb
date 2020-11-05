@@ -7,6 +7,17 @@
 
   <div class="shiftH1">My Reviews:</div>
     <div>
+      <%  if @user.reviews.empty? %>
+        <div class="shiftp"> No reviews yet!</div><br>
+        <br>
+        <a class="btn btn-primary" <%= link_to "Write A Review", new_review_path%> </a> 
+        <a class="btn btn-primary tab" <%= link_to "Add a Kombucha" , new_kombucha_path %></a> 
+        <br>
+        <br>
+        <br>
+      <% end %>
+    </div>
+    <div>
       <% @user.reviews.each do |review|%>
         <div class="card" style="width: 65rem;" > 
           <div class="card-body">

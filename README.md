@@ -9,11 +9,6 @@ Kombucha Thoughts is a Rails web app designed to catalog your thoughts and opini
 ## Getting started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Prerequisites
-
-- Ruby
-- Rails 5+
-- SQL database
 
 ## Installation
 1. Clone this repo
@@ -40,9 +35,6 @@ In addition to the web interface, you can interact with the app via command line
 
 ## Contributing 
 Bug reports and pull requests are welcome at [https://github.com/no0ro/kombucha_thoughts](https://github.com/no0ro/kombucha_thoughts). This project as well as all other content on my GitHub are intended to be safe, welcoming, and open for collaboration. Users are expected to adhere to the [Contributor Covenant code of conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct) code of conduct. 
-
-## Authors 
-**[Noelle](https://github.com/no0ro/)**
 
 ## License
 Licensed under the [MIT License](https://opensource.org/licenses/MIT).

@@ -1,56 +1,48 @@
 <div class='container'>
-    <h2 class='text-center'> Choose a Sign Up Method Below: </h2>
-
+    <h3 class="shiftH3">  Sign Up Through Kombucha Thoughts: </h3>
     <%= render partial: "layouts/errors", locals: {object: @user} %>
-
-    <div class="bg-light text-left rounded">
-        <h3> Sign Up Through Kombucha Thoughts: </h3>
-        <br>
-
+        
+    <div class="form-section ">
         <%= form_for @user do |f| %>
-        <%= f.label :username %>
-        <%= f.text_field :username, required: true %>
 
-        <%= f.label :email  %>
-        <%= f.email_field :email, required: true %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, required: true %>
-
-        <%= f.submit "Sign Up"  %>
-        <% end %>
-    </div>
-    <br><br>
-
-
-    <h3>Or Sign Up Through: </h3>
-    <div class="themed-grid-col col-md-4">
-        <div class="card" style="width: 18rem;">
-            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-            <%= image_tag("google_logo.png", size: "100x80" , alt: "Google Logo") %>
-            <div class="card-body">
-                <h5 class="card-title">Sign Up via Google</h5>
-            </div>
-            <div class="card-body">
-                <a href="/auth/google_oauth2" class="btn btn-primary">Signup</a>
+         <div class="form-group row">
+            <%= f.label :username , {class: "col-2 col-form-label"}%>
+            <div class="col">
+                <%= f.text_field :username,  {class: "form-control"} %>
             </div>
         </div>
-    </div>
 
 
-    <div class="themed-grid-col col-md-4">
-        <div class="card" style="width: 18rem;">
-            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-            <%= image_tag("github_logo.png", size: "100x80" , alt: "Github Logo") %>
-            <div class="card-body">
-                <h5 class="card-title">Sign Up via Github</h5>
+         <div class="form-group row">
+            <%= f.label :email , {class: "col-2 col-form-label"}  %>
+            <div class="col">
+                <%= f.email_field :email, {class: "form-control"} %>
             </div>
-            <div class="card-body">
-                <a href="/auth/github" class="btn btn-primary">Signup</a>
-            </div>
-
         </div>
+
+        <div class="form-group row">
+            <%= f.label :password , {class: "col-2 col-form-label"}  %>
+            <div class="col">
+                <%= f.password_field :password, {class: "form-control"} %>
+            </div>
+        </div>
+
+        <div>
+            <%= f.submit "Sign Up"  %>
+        </div>
+
     </div>
+    <% end %>
 </div>
 
+<br>
+<br>
+<div class='container'>
+    <h3 class="shiftH3">Or Sign Up Through: </h3>
+    <a class="btn btn-primary btn-lg" href="/auth/google_oauth2" role="button"> Sign Up With Google </a>
 
+    <a class="btn btn-primary btn-lg tab" href="/auth/github" role="button"> Sign Up With Github </a>
+
+<div>
+
+   

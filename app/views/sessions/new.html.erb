@@ -1,58 +1,51 @@
 <div class='container '>
-    <%# <h2 class='text-center lead'> Choose a Login Method Below: </h2> %>
-    <br>
-    <br>
-   
-    <div class="bg-light text-left rounded border border-dark">
-        <h3 class="lead">Login Through Kombucha Thoughts: </h3>
-        <br>
+    <h3 class="shiftH3">Log In Through Kombucha Thoughts: </h3>
 
-        <%= form_for(:user) do |f| %>
-        <%= flash[:error] %>
+    <%= form_for(:user) do |f| %>
 
-        <%= f.label :username%>
-        <%= f.text_field :username, required: true %>
-
-        <%= f.label :email , class: 'tab'  %>
-        <%= f.email_field :email, required: true %>
-
-        <%= f.label :password , class: 'tab'  %>
-        <%= f.password_field :password, required: true %>
-
-        <%= f.submit "Log In" %><br><br>
-        <% end %>
-    </div>
-    <br><br>
-
-    <%# ----- %>
-
-
-    <h3 class="lead">Or Login Through: </h3>
-    <div class="themed-grid-col col-md-4 border border-dark">
-        <div class="card" style="width: 18rem;">
-            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-            <%= image_tag("google_logo.png", size: "100x80" , alt: "Google Logo") %>
-            <div class="card-body">
-                <h5 class="card-title">Log In via Google</h5>
+        <div class="form-section ">
+            <% if flash[:error] %>
+                <div class="alert alert-danger"><%= flash[:error] %></div>
+            <% end %>
+        
+            <div class="form-group row">
+                <%= f.label :username , {class: "col-2 col-form-label"}%>
+                <div class="col">
+                     <%= f.text_field :username,  {class: "form-control"} %>
+                </div>
             </div>
-            <div class="card-body">
-                <a href="/auth/google_oauth2" class="btn btn-primary">Login</a>
-            </div>
-        </div>
-    </div>
 
-
-    <div class="themed-grid-col col-md-4">
-        <div class="card" style="width: 18rem;">
-            <%# <img src="/google_logo.png" class="card-img-top" alt="Google Logo"> %>
-            <%= image_tag("github_logo.png", size: "100x80" , alt: "Github Logo") %>
-            <div class="card-body">
-                <h5 class="card-title">Log In via Github</h5>
+             <div class="form-group row">
+                <%= f.label :email , {class: "col-2 col-form-label"}  %>
+                <div class="col">
+                     <%= f.email_field :email, {class: "form-control"} %>
+                </div>
             </div>
-            <div class="card-body">
-                <a href="/auth/github" class="btn btn-primary">Login</a>
+
+             <div class="form-group row">
+                <%= f.label :password , {class: "col-2 col-form-label"}  %>
+                <div class="col">
+                    <%= f.password_field :password, {class: "form-control"} %>
+                </div>
+            </div>
+
+             <div>
+                <%= f.submit "Log In" %><br><br>
             </div>
 
         </div>
-    </div>
+    <% end %>
 </div>
+
+<br>
+
+
+<div class='container '>
+    <h3 class="shiftH3">Or Log In Through: </h3>
+    <a class="btn btn-primary btn-lg" href="/auth/google_oauth2" role="button"> Log In With Google </a>
+
+    <a class="btn btn-primary btn-lg tab" href="/auth/github" role="button"> Log In With Github </a>
+
+<div>
+
+   
