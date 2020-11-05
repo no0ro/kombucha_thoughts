@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Kombucha Thoughts
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Kombucha Thoughts is a Rails web app designed to catalog your thoughts and opinions of various kombuchas. 
 
-* System dependencies
+## Getting started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-* Configuration
+### Prerequisites
 
-* Database creation
+- Ruby
+- Rails 5+
+- SQL database
 
-* Database initialization
+### Installation
+1. Clone this repo
+2. Install dependencies:
+   ```
+   $ bundle install
+   ```
+3. Set up the database with `rake db:create` and `rake db:migrate`
+4. Run web server:
+    `$ rails s`
+5. Navigate to `localhost:3000` in your browser
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+Licensed under the [MIT License](https://opensource.org/licenses/MIT).
