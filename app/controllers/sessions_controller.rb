@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:welcome, :new, :create, :omniauth]
         # ^ necessary bc, in App Controller we `before_action :require_login`
 
-    # / (views/welcome.html.erb)
+    # '/' (views/welcome.html.erb)
     def welcome 
     end 
 
@@ -23,13 +23,11 @@ class SessionsController < ApplicationController
             flash[:error] = "Please try again. Login information is incorrect."
             redirect_to login_path # impt to redirect here! so username isnt persisted
         end
-    
     end
 
     def destroy 
         session.delete(:user_id) 
-        # flash[:notice] = "Goodbye - You successfully logged out" 
-        redirect_to '/' # root path
+        redirect_to '/' # root path aka _loggout_links
     end 
     
     def omniauth
