@@ -7,48 +7,17 @@ class Kombucha < ApplicationRecord
   has_many :users, through: :reviews #ppl who have reviewed it
   # ^ gives us all the plural instances
 
-  # ----------------------------
-  # validations --> notice plurel vs not here. bc custom or not
+
+  # validations 
   validates :flavor, presence: :true
   validates :description, presence: :true 
 
+  # custom validation
   validate :not_a_duplicate
 
 
-  # ----------------------------
-  # Instance Methods 
-
-  # written as class method - order alphabetically 
-  # used in reviews/new view, but on the Kombucha class
-  def self.abc_name
-    order(:flavor) 
-  end 
-
-  # written as scope method 
-  # --> used in KombController#index
-  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
-      # with just joins - issue is we're only getting kombuchas that have actually had thrir average combined with our reveiw
-          # so switched to left_joins
-
-  # display the average rating 
-  # scope :average_rating, -> {Kombucha.joins(:reviews).group(:id).average(:rating)}
-
-
-      
-  # brand_attributes (allows 2 versions of Brand to be properly saved to db)
-  def brand_attributes=(attributes)
-    self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
-    self.brand  
-  end 
- 
-  # ----------!!!------------------- 
-  # accepts_nested_attributes_for :brand
-    # this allows the kombucha model to change the Brand by passing a hash key brand_attributes
-    # this still be there ???
-  # ---------------------------
-
-  # same -- validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
-  def not_a_duplicate
+   # same -- validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
+   def not_a_duplicate
     # if there is already a kombucha with that flavor && brand, throw an error
     kombucha = Kombucha.find_by(flavor: flavor, brand_id: brand_id)
     if !!kombucha && kombucha != self 
@@ -57,15 +26,36 @@ class Kombucha < ApplicationRecord
     end 
   end 
 
+
+
+  # written as class method - order alphabetically 
+  # --> reviews/new view, but on the Kombucha class
+  def self.abc_name
+    order(:flavor) 
+  end 
+
+  # --> used in KombController#index
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
+
+  
+
+
+
+  # brand_attributes (allows 2 versions of Brand to be properly saved to db)
+  def brand_attributes=(attributes)
+    self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
+    self.brand  
+  end 
+ 
+
+
+
   # for collection_select display in /reviews/new
   def flavor_and_brand
     "#{flavor} - #{brand.name}"  
-     # "#{flavor} - #{brand.try(:name)}"
   end 
  
   def brand_and_flavor 
     "#{brand.name} -  #{flavor}"  
-     # "#{flavor} - #{brand.try(:name)}"
   end 
-
 end
