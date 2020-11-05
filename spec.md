@@ -17,36 +17,61 @@ Specs:
             - User has_many Kombuchas though Reviews, Kombuchas has_many Users though Reviews
 
     [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
-            - title 
-            - rating
-            - content
+            - title -- reviews.title
+            - rating -- reviews.rating
+            - content -- reviews.content
   
-    Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+    [X] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+        - User
+        - Brand
+        - Kombucha
+        - Reviews
 
-    Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
-     [] Include signup (how e.g. Devise)
+    [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+        - Kombucha.order_by_rating   URL: /kombuchas  
+        - Brand.abc_name  URL: /brands
 
-     [] Include login (how e.g. Devise)
+     [X] Include signup (how e.g. Devise)
+        - take user form input and check that its valid, if it is, create and save the new user object then log the user in 
+        - bcrypt gem 
+        - has_secure_password
+     
 
-     [] Include logout (how e.g. Devise)
+     [X] Include login (how e.g. Devise)
+        - if user is in the db w/ correct password, and all validations pass, then set and save the users id to be the session id
+        - bcrypt gem 
+        - has_secure_password
+        - .authenticate method in SessionsController#create
+        - add methods in ApplicationController that check for authorization
+
+
+     [X] Include logout (how e.g. Devise)
+        - SessionsController#destroy - delete the session 
+
 
      [X] Include third party signup/login (how e.g. Devise/OmniAuth)
             - Github omniauth
             - Google omniauth
-
+            - .env file, omniauth hash, methods in session controller and user model
+  
     [X] Include nested resource show or index (URL e.g. users/2/recipes)
             - INDEX:  kombuchas/2/reviews
 
     [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
             - kombuchas/2/reviews/new
 
-    [] Include form display of validation errors (form URL e.g. /recipes/new)
-            - 
+    [X] Include form display of validation errors (form URL e.g. /recipes/new)
+            - /kombuchas/new
+            - /reviews/new
+            - /kombuchas/2/reviews/new
+            - /signup
+            - /login
+  
 
 Confirm:
 
-    [] The application is pretty DRY
-    [] Limited logic in controllers
-    [] Views use helper methods if appropriate
-    [] Views use partials if appropriate
+    [X] The application is pretty DRY
+    [X] Limited logic in controllers
+    [X] Views use helper methods if appropriate
+    [X] Views use partials if appropriate
