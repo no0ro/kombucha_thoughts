@@ -7,14 +7,14 @@
         <div class="navbar-nav collapse navbar-collapse"  id="navbarText">
           
             <ul class="nav justify-content-center mr-auto" >
-                <li class='nav-item'><%= link_to 'Add a Kombucha', new_kombucha_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'Add a Review', new_review_path, class: 'nav-link' %></li>  
+                <li class='nav-item'><%= link_to 'Add a Kombucha', new_kombucha_path, class: 'nav-link ' %></li>
+                <li class='nav-item halfTab'><%= link_to 'Add a Review', new_review_path, class: 'nav-link' %></li>  
 
                 <a class="navbar-brand" href="<%=user_path(current_user)%>"> <%= image_tag("logokombucha.png", size: "50x70", alt: "KombuchaThroughts Logo", class:"halfTab") %></a> 
 
-                <li class='nav-item'><%= link_to 'Kombuchas', kombuchas_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'Reviews', reviews_path, class: 'nav-link' %></li>
-                <li class='nav-item'><%= link_to 'Brands', brands_path, class: 'nav-link' %></li>   
+                <li class='nav-item '><%= link_to 'Kombuchas', kombuchas_path, class: 'nav-link' %></li>
+                <li class='nav-item halfTab'><%= link_to 'Reviews', reviews_path, class: 'nav-link' %></li>
+                <li class='nav-item halfTab'><%= link_to 'Brands', brands_path, class: 'nav-link' %></li>   
             </ul>  
         </div>
     <div>
