@@ -1,20 +1,24 @@
-<!--`/reviews/new`-->
 <!-- /kombucha/1/reviews/new`-->
+<!--`/reviews/new`   &   /reviews/3/edit`-->
+
+
 
 <%= display_header(@review) %>
 
 
-<!-- ? action='/reviews', method='post'-->
 <div class="container">
 <%= form_for([@user, @review]) do |f| %>
     <%= render partial: 'layouts/errors', locals: {object: @review} %>
     
     <div class="form-section">
         <div class="form-group row">
-            <% if params[:kombucha_id] %>
-                <%= f.hidden_field :kombucha_id %>
-            <% else %>
+            <% if params[:kombucha_id] || @review.id %>                
+                <%# hits /komb/1/reviews/new %>
+                <%# hits /reviews/1/edit -- User should not be able to edit Komb Association from drop down menu %>
+                 <%= f.hidden_field :kombucha_id %>
+            <% else %>   
             <div class="col">
+            <%# hits /reviews/new %>
                 <%= f.label :kombucha_id, "Select a Kombucha "%>
                 <%= f.collection_select :kombucha_id, Kombucha.abc_name, :id, :flavor_and_brand, include_blank: true %>
             </div>
@@ -24,7 +28,7 @@
          <div class="form-group row">
             <%= f.label :title, {class: "col-1 col-form-label"}%>
             <div class="col">
-                <%= f.text_field :title , {class: "form-control"}%>
+                <%= f.text_field :title, {class: "form-control"}%>
             </div>
         </div>
         <br>

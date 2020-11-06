@@ -52,8 +52,9 @@ class ReviewsController < ApplicationController
 
     # GET /reviews/1/edit
     def edit 
-        # link only appears if YOU created the review
-        # access point: link inside -- reviews show,  /reviews/1 
+       # access point: users show page
+       # access point: link inside -- reviews show,  /reviews/1 
+             # link only appears if YOU created the review
     end 
 
 
@@ -67,7 +68,7 @@ class ReviewsController < ApplicationController
         end 
     end 
 
-    
+
     # DELETE /reviews/1 
     def destroy 
         if @review.present? #necessary?
