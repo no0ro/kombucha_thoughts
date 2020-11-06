@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
     # ^ check the session for a user_id, pull the user from the db & save it in @current_user instance variable.
     helper_method :current_user, :logged_in?
     # :current_user --> Users_Controller#create, Views/Layouts/application.html.erb
-     
+    # :logged_in? --> Helpers/application_helper.rb 
+
 
     private
  
