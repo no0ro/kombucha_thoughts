@@ -4,6 +4,19 @@ class UsersController < ApplicationController
         # NOTE :current_user  --> in #show 
 
 
+    # GET /users/:id
+    def show 
+        @some_user = User.find(params[:id]) 
+        # ^ so users can't access eachothers show page by changing the URL :id
+
+        if @some_user.id != session[:user_id]
+            redirect_to '/'    
+        else 
+            # assign current_user(from AppController) to the instance vari @user
+            @user = current_user  # looks them up by session[:user_id]
+        end
+    end 
+
     # GET /signup 
     def new 
         @user = User.new
@@ -14,26 +27,13 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save # login the user
-            session[:user_id] = @user.id #log them in
+            session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else 
             render :new
         end 
     end 
 
-    # GET /users/:id
-    def show 
-        @some_user = User.find(params[:id]) 
-        # ^ dont want this before_action, bc then if doenst check anything
-
-        if @some_user.id != session[:user_id]
-                # notice: "You do Not have access to this users account"
-            redirect_to '/' 
-                # ERROR: change this ^^ to be a better redirect / Add Error Message
-        else # assign current_user(from app_cont.) to the instance vari @user
-            @user = current_user  # looks them up by session[:user_id]
-        end
-    end 
 
     private 
     def user_params 

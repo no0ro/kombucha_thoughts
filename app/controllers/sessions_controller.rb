@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:welcome, :new, :create, :omniauth]
         # ^ necessary bc, in App Controller we `before_action :require_login`
 
-    # '/' (views/welcome.html.erb)
+    # '/' 
     def welcome 
     end 
 
@@ -13,22 +13,23 @@ class SessionsController < ApplicationController
     # POST /login
     def create 
         # does the user exist in our system? 
-        @user = User.find_by(username: params[:user][:username]) # find the user in our system via (key: value)
+        @user = User.find_by(username: params[:user][:username]) # find the user via (key: value)
 
         if @user && @user.authenticate(params[:user][:password]) 
-            session[:user_id] = @user.id # set the user id (2) to be saved as the session. store them in our session. this is officially how we say theyre logged in 
-            # flash[:notice] = "You are now logged in"
+            session[:user_id] = @user.id # login user in 
             redirect_to user_path(@user)
         else
             flash[:error] = "Please try again. Login information is incorrect."
-            redirect_to login_path # impt to redirect here! so username isnt persisted
+            redirect_to login_path # impt to redirect here! so username isn't persisted
         end
     end
+
 
     def destroy 
         session.delete(:user_id) 
         redirect_to '/' # root path aka _loggout_links
     end 
+    
     
     def omniauth
         if params[:provider] == 'github'
