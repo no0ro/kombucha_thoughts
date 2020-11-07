@@ -2,29 +2,33 @@
 <div class="container-fluid  ">
     <div class="shiftH1"> REVIEW FOR: </div>
 
-
-    <div class="card " style="width: 55rem;" > 
-       <% if flash[:notice] %>
-            <div class="alert-success"><%= flash[:notice] %></div>
+    <div class="card " style="width: 55rem;">
+        <% if flash[:notice] %>
+        <div class="alert-success"><%= flash[:notice] %></div>
         <% end %>
-        
+
         <div class="card-body">
-        <h4 class="card-title shiftH3 mb-2">  <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %> </h4><br>
+            <h4 class="card-title shiftH3 mb-2"> 
+            <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %>
+            </h4><br>
 
             <div class="shiftp"> Rating: <%= @review.rating%></div>
             <div class="shiftp">Title: <%= @review.title%></div>
-            <div class="shiftp" > Content: <%= @review.content %></div>
+            <div class="shiftp"> Content: <%= @review.content %></div>
             <br>
-             <h6 class="card-subtitle mb-2 shiftp text-muted small"> Reviewed by: <%= @review.user.username%> on <%=@review.date_formatted %> </h6> <br>
-            
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"> 
+            Reviewed by: <%= @review.user.username%> on <%=@review.date_formatted %> </h6> <br>
+
             <%= edit_review_if_creator %>
-            <%= delete_review_if_creator %><br>
- 
+            <%= delete_review_if_creator %>
+            <br>
         </div>
+
         <div class="card-footer">
-            <div class="shiftp"><strong>- View All Reviews for: <%= link_to @kombucha.flavor, kombucha_reviews_path(@kombucha) %> - </strong></div>
+            <div class="shiftp"><strong>
+            - View All Reviews for:<%= link_to @kombucha.flavor, kombucha_reviews_path(@kombucha) %> - 
+            </strong></div>
         </div>
     </div>
 
 </div>
-

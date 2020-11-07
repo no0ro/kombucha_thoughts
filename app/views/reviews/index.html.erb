@@ -1,10 +1,10 @@
 <!--`/reviews`-->
 <!-- /kombucha/1/reviews`-->
 
-<%# <h5> SAME PATH: views/reviews/index.html.erb </h5>
-<h5> UN-NESTED: click "All Reviews"  || /reviews || </h5>
-<h5> NESTED: click "View All Reviews for:__" || /kombuchas/:id/reviews || </h5> %>
-
+<%# 
+# UN-NESTED: click "All Reviews"  || /reviews 
+# NESTED: click "View All Reviews for:__" || /kombuchas/:id/reviews  
+%>
 
 <div class="container-fluid text-center">
     <% if @kombucha %>
@@ -20,10 +20,9 @@
     <% end %>
 
     <br>
-        <% if @kombucha %>
-    <% end %>
-
-    <%# <h1> Average Rating: <%= @avg_rating%> 
+        <%# if @kombucha %>
+                <%# <h1> Average Rating: <%= @avg_rating%> 
+        <%# end %>
 
         <div>
             <% @reviews.each do |review| %> 

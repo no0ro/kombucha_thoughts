@@ -14,15 +14,18 @@ module ReviewsHelper
         end 
     end
 
+    # in views/reviews/show.html.erb
     def edit_review_if_creator
         if logged_in? && @review.user_id == current_user.id
             content_tag(:h6, (link_to "Edit Review", edit_review_path(@review)), {class: "card-subtitle mb-2 shiftp text-muted small"}) 
         end 
     end
-
+    
+    # in views/reviews/show.html.erb
     def delete_review_if_creator
         if logged_in? && @review.user_id == current_user.id
             content_tag(:h6, (button_to "Delete This Review", review_path(@review), method: :delete), {class: "card-subtitle mb-2 shiftp text-muted small"})
         end 
     end
+
 end
