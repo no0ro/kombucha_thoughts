@@ -3,37 +3,37 @@
 
     <%= form_for(:user) do |f| %>
 
-        <div class="form-section ">
-            <% if flash[:error] %>
-                <div class="alert alert-danger"><%= flash[:error] %></div>
-            <% end %>
-        
-            <div class="form-group row">
-                <%= f.label :username , {class: "col-2 col-form-label"}%>
-                <div class="col">
-                     <%= f.text_field :username,  {class: "form-control"} %>
-                </div>
-            </div>
+    <div class="form-section ">
+        <% if flash[:error] %>
+        <div class="alert alert-danger"><%= flash[:error] %></div>
+        <% end %>
 
-             <div class="form-group row">
-                <%= f.label :email , {class: "col-2 col-form-label"}  %>
-                <div class="col">
-                     <%= f.email_field :email, {class: "form-control"} %>
-                </div>
+        <div class="form-group row">
+            <%= f.label :username , {class: "col-2 col-form-label"}%>
+            <div class="col">
+                <%= f.text_field :username,  {class: "form-control"} %>
             </div>
-
-             <div class="form-group row">
-                <%= f.label :password , {class: "col-2 col-form-label"}  %>
-                <div class="col">
-                    <%= f.password_field :password, {class: "form-control"} %>
-                </div>
-            </div>
-
-             <div>
-                <%= f.submit "Log In" %><br><br>
-            </div>
-
         </div>
+
+        <div class="form-group row">
+            <%= f.label :email , {class: "col-2 col-form-label"}  %>
+            <div class="col">
+                <%= f.email_field :email, {class: "form-control"} %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :password , {class: "col-2 col-form-label"}  %>
+            <div class="col">
+                <%= f.password_field :password, {class: "form-control"} %>
+            </div>
+        </div>
+
+        <div>
+            <%= f.submit "Log In" %><br><br>
+        </div>
+
+    </div>
     <% end %>
 </div>
 
@@ -43,9 +43,7 @@
 <div class='container '>
     <h3 class="shiftH3">Or Log In Through: </h3>
     <a class="btn btn-primary btn-lg" href="/auth/google_oauth2" role="button"> Log In With Google </a>
-
     <a class="btn btn-primary btn-lg tab" href="/auth/github" role="button"> Log In With Github </a>
-
 <div>
 
    
