@@ -29,6 +29,8 @@ Specs:
 
 
     [X] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+        - Reviews.newest_reviewed URL: /reviews/newest_reviewed
+  
         - Kombucha.order_by_rating   URL: /kombuchas  
         - Brand.abc_name  URL: /brands
 
