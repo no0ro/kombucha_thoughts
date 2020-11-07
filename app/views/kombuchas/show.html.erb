@@ -15,11 +15,10 @@
              
             <br>
 
-            <h6 class="card-subtitle mb-2 shiftp text-muted small"> Added By:  <%= @kombucha.user.username %> </h6>
-            <% if logged_in? && @kombucha.user_id == current_user.id %>
-            <h6 class="card-subtitle mb-2 shiftp text-muted small"><%= link_to "Edit Kombucha", edit_kombucha_path(@kombucha) %> </h6>
-            <% end %>
-          
+            <h6 class="card-subtitle mb-2 shiftp text-muted small"> 
+                Added By:  <%= @kombucha.user.username %> 
+            </h6>
+            <%= edit_kombucha_if_creator %>
             <br>
             <a class="btn btn-primary" <%= link_to "Write A Review", new_kombucha_review_path(@kombucha)%> </a> 
             <a class="btn btn-primary tab" <%= link_to "View This Kombuchas Reviews" , kombucha_reviews_path(@kombucha) %></a> 
