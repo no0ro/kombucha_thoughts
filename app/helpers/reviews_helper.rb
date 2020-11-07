@@ -1,7 +1,7 @@
 module ReviewsHelper
 
      # in views/reviews/_form.html.erb
-    def display_header(review)
+    def display_new_or_edit_form_header(review)
         if params[:kombucha_id] # new nested
             # hits /kombucha/1/reviews/new 
             content_tag(:h1, "Write a Review for:  #{@review.kombucha.flavor} -  #{@review.kombucha.brand.name}", {class: "shiftH3  text-center"}) 

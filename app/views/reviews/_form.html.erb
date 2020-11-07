@@ -1,10 +1,7 @@
 <!-- /kombucha/1/reviews/new`-->
 <!--`/reviews/new`   &   /reviews/3/edit`-->
 
-
-
-<%= display_header(@review) %>
-
+<%= display_new_or_edit_form_header(@review) %>
 
 <div class="container">
 <%= form_for([@user, @review]) do |f| %>
