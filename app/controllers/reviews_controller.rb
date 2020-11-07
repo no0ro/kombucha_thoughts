@@ -68,6 +68,10 @@ class ReviewsController < ApplicationController
         end 
     end 
 
+    def newest_reviewed
+        @reviews = Review.newest_reviewed
+
+    end 
 
     # DELETE /reviews/1 
     def destroy 
@@ -76,6 +80,7 @@ class ReviewsController < ApplicationController
             redirect_to reviews_path #, notice: Kombucha was successfully destroyed. 
         end
     end 
+
 
 
     private 

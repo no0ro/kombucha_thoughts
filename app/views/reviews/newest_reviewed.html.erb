@@ -1,0 +1,23 @@
+<div class="container-fluid text-center  ">
+    <div class="shiftH1"> 3 Most Recent Reviews </div>
+        <ol>
+        <% @reviews.each do |review| %>
+            <div class="card mx-auto " style="width: 55rem;">
+             <li>
+                <div class="card-body">
+                    <h4 class="card-title shiftH3 mb-2"> <%= review.kombucha.flavor %> - <%= review.kombucha.brand.name %></h4>
+                    <br>
+                    <div class="shiftp"> Rating: <%= review.rating%></div>
+                    <div class="shiftp">Title: <%= review.title%></div> 
+                    <div class="shiftp"> Content: <%= review.content %></div>
+                    <br>
+                    <h6 class="card-subtitle mb-2 shiftp text-muted small"> Reviewed by: <%= review.user.username%> on <%=review.date_formatted %> </h6> 
+                    <strong> View All Reviews for: <%= link_to review.kombucha.flavor, kombucha_reviews_path(review.kombucha) %> </strong>
+                </div>
+             </li>
+            </div>
+            <hr> 
+        <% end %>
+        </ol>
+    </div>
+</div>

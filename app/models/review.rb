@@ -12,6 +12,9 @@ class Review < ApplicationRecord
   validates :kombucha, uniqueness: { scope: :user, message: "has already been reviewed by you"}
 
  # Methods
+
+ scope :newest_reviewed, -> { order('created_at DESC').limit(3) }
+
  def date_formatted
   created_at.strftime("%m-%d-%Y")
   # use on - a REVIEW instance - ie: review.date_formatted

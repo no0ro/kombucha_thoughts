@@ -11,15 +11,19 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
+
+  resources :brands
+
+  get '/reviews/newest_reviewed' => 'reviews#newest_reviewed'
+    # Remember: must go above reviews resource, or will get routed to reviews/index
+
   resources :reviews
-  
+ 
   resources :kombuchas do 
     resources :reviews, only: [:new, :index]
     # /kombuchas/:kombucha_id/reviews/new
     # /kombuchas/:kombucha_id/reviews   
   end 
-
-  resources :brands
 
   resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
