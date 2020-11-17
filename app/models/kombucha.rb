@@ -24,6 +24,7 @@ class Kombucha < ApplicationRecord
 
   # Methods 
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
+  # allows a model to alter related models through itself 
   def brand_attributes=(attributes)
     self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
     self.brand  
@@ -50,10 +51,4 @@ class Kombucha < ApplicationRecord
   # Scope
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
   # --> used in KombController#index
- 
- 
-
-
-
-
 end
