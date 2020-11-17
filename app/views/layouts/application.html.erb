@@ -22,7 +22,8 @@
   <body>
     <div class="container-fluid">
         <header>
-          <%= render_nav_bar %>
+        <%# In helpers/application_helper.rb %>
+          <%= render_nav_bar %> 
         </header>
 
 
@@ -32,6 +33,7 @@
 
         
         <footer> <%# logout link %>
+        <%# In helpers/application_helper.rb %>
           <%= render_footer %>
         </footer>
     </div>

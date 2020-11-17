@@ -25,8 +25,8 @@ class Kombucha < ApplicationRecord
   # Methods 
   # brand_attributes (allows 2 versions of Brand to be properly saved to db)
   def brand_attributes=(attributes)
-  self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
-  self.brand  
+    self.brand = Brand.find_or_create_by(attributes) if !attributes['name'].empty?
+    self.brand  
   end 
 
   def self.abc_name

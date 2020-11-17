@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     # GET /users/:id
     def show 
+        # DIY Authorization
         @some_user = User.find(params[:id]) 
         # ^ so users can't access eachothers show page by changing the URL :id
 
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
     def create 
         @user = User.new(user_params)
 
+        # .save Authentication
         if @user.save # login the user
             session[:user_id] = @user.id 
             redirect_to user_path(@user)

@@ -19,13 +19,13 @@ class ReviewsController < ApplicationController
     # GET /reviews/new 
     # GET /kombuchas/1/reviews/new 
     def new 
-
         # if nested, aka a :kombucha_id exists
         if @kombucha = Kombucha.find_by_id(params[:kombucha_id])  # (params[:kombucha_id]) refering to reviews params, not kombuchas #^(params[:kombucha_id]) is specified in form_for hidden field. 
             @review = @kombucha.reviews.build  # build review form & associate with this kombucha ###  # a review belongs_to a kombucha, and kombucha doesnt belong_to a review #this review never actually gets saved(aka carry over to create action). it is just the review thats populating the form  
-
         else # unnested, display generic form
             @review = Review.new
+            # collection_select in form
+            # has_many through form
         end
     end 
 
@@ -68,6 +68,7 @@ class ReviewsController < ApplicationController
         end 
     end 
 
+    # /reviews/newest_reviewed
     def newest_reviewed
         @reviews = Review.newest_reviewed
 
@@ -87,7 +88,7 @@ class ReviewsController < ApplicationController
 
     def review_params 
         params.require(:review).permit(:kombucha_id, :content, :title, :rating)
-#:brand_id, brand_attributes: [:name] 
+
     end 
 
     def set_review

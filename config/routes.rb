@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # maps HTTP verbs to controller actions
+
   get '/' => "sessions#welcome" # root
 
   get '/login' => "sessions#new"
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
 
-  resources :brands
+  resources :brands, only: [:index]
 
   get '/reviews/newest_reviewed' => 'reviews#newest_reviewed'
     # Remember: must go above reviews resource, or will get routed to reviews/index

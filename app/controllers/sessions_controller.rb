@@ -15,12 +15,14 @@ class SessionsController < ApplicationController
         # does the user exist in our system? 
         @user = User.find_by(username: params[:user][:username]) # find the user via (key: value)
 
+        # Authentication confirms that users are who they say they are.
         if @user && @user.authenticate(params[:user][:password]) 
             session[:user_id] = @user.id # login user in 
             redirect_to user_path(@user)
         else
             flash[:error] = "Please try again. Login information is incorrect."
-            redirect_to login_path # impt to redirect here! so username isn't persisted
+            redirect_to login_path # impt to redirect here! so username isn't persisted # Redirect sends the browser to a different URL, but since this is the same page, it just clears the form
+
         end
     end
 
@@ -30,7 +32,7 @@ class SessionsController < ApplicationController
         redirect_to '/' # root path aka _loggout_links
     end 
     
-    
+    # 3rd Party API authentication
     def omniauth
         if params[:provider] == 'github'
             @user = User.find_or_create_by_github_omniauth(auth)

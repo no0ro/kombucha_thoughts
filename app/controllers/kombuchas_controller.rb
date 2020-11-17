@@ -29,7 +29,7 @@ class KombuchasController < ApplicationController
             flash[:notice] =  "Kombucha Successfully Created"
             redirect_to kombucha_path(@kombucha) #, notice: "Kombucha Successfully Created"
         else 
-# build -- @kombucha.build_brand
+            # build -- @kombucha.build_brand
             render :new 
             # re-render the :new template WITHOUT throwing away the invalid @kombucha
         end 
