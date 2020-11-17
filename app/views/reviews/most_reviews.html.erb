@@ -1,10 +1,17 @@
-<div> 
-<%= @review.kombucha.flavor%>
-<%= @review.kombucha_id%>
-<%= @kombucha.reviews.length%>
 
- <br>
-
-
-
-
+<div class="container-fluid text-center  ">
+    <div class="shiftH1"> Most Reviews Reviewed</div>
+        <div class="card mx-auto " style="width: 55rem;">
+            <div class="card-body">
+                <h4 class="card-title shiftH3 mb-2"> <%= @review.kombucha.flavor %> - <%= @review.kombucha.brand.name %></h4>
+                    <br>
+                    <div class="shiftp"> Total Number of Reviews: <%= @kombucha.reviews.length%></div> 
+                    <br>
+                    <br>
+                    <h6 class="card-subtitle mb-2 shiftp text-muted small"> Added by User: <%=  @kombucha.user.username %>  </h6> 
+                    <h5> View All Reviews for: <%= link_to @review.kombucha.flavor, kombucha_reviews_path(@review.kombucha) %> </h5>
+            </div>
+        </div>
+        <hr> 
+    </div>
+</div>
