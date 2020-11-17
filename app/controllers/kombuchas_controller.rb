@@ -63,6 +63,7 @@ class KombuchasController < ApplicationController
     # Never trust submitted params, only allow the white list through
     def kombucha_params 
         params.require(:kombucha).permit(:flavor, :description, :brand_id, brand_attributes: [:name]) 
+        # MUST pass :brand_id!! or nested Kombucha form will create a new instance with incorrect/incomplete params
     end 
 
     # Use Callback to share common setup bt actions
