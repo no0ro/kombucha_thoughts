@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
     def most_reviews
         @review = Review.most_reviews 
         @kombucha = Kombucha.find_by_id(@review.kombucha_id)
-            # added @kombucha to easically get the total number of reviews it has
+            # added @kombucha to easily get the total number of reviews it has
     end 
 
     # DELETE /reviews/1 

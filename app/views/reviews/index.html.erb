@@ -13,12 +13,16 @@
 
         <a class="btn btn-primary" <%= link_to "Write A Review", new_kombucha_review_path(@kombucha)%> </a> 
         <a class="btn btn-primary" <%= link_to "3 Newest Reviews", reviews_newest_reviewed_path %> </a> 
+        <a class="btn btn-primary" <%= link_to "Most Reviewed Kombucha", reviews_most_reviews_path %> </a> 
+
 
         <hr>
     <% else %>
         <div class="shiftH1">ALL REVIEWS</div>
         <p class="shiftp">Explore the Communities Kombucha Thoughts</p>
         <a class="btn btn-primary" <%= link_to "3 Newest Reviews", reviews_newest_reviewed_path %> </a> 
+        <a class="btn btn-primary" <%= link_to "Most Reviewed Kombucha", reviews_most_reviews_path %> </a> 
+
 
         <hr>
     <% end %>
