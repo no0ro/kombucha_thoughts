@@ -22,16 +22,6 @@ Rails.application.routes.draw do
   get '/reviews/most_reviews' => 'reviews#most_reviews'
 
   resources :reviews
-  # reviews/most_reviews
-
-  # Models 
-  # scope - 
-
-  # Controller 
-  # most_reviews
-
-  # Views
-  # most_reviews
  
   resources :kombuchas do 
     resources :reviews, only: [:new, :index]
